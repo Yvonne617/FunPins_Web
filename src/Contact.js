@@ -1,8 +1,40 @@
 import React, { Component } from 'react';
+import {Helmet} from 'react-helmet';
+import { Item } from 'semantic-ui-react'
 import Menu from './topmenu';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image } from 'semantic-ui-react';
-export default class MenuExampleSecondary extends Component {
+import Contactform from './Contactform';
+import email_logo from './img/email.png';
+import {
+    setTranslations,
+    setDefaultLanguage,
+    setLanguageCookie,
+    getLanguage,
+    setLanguage,
+    translate,
+  } from 'react-switch-lang';
+import PropTypes from 'prop-types';
+setDefaultLanguage(getLanguage());
+const items = [
+    {
+      childKey: 0,
+      image: '/images/wireframe/image.png',
+      header: 'Header',
+      description: 'Description',
+      meta: 'Metadata',
+      extra: 'Extra',
+    },
+    {
+      childKey: 1,
+      image: '/images/wireframe/image.png',
+      header: 'Header',
+      description: 'Description',
+      meta: 'Metadata',
+      extra: 'Extra',
+    },
+  ]
+class Contact extends Component {
     state = { width: 0, height: 0 };
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -14,14 +46,29 @@ export default class MenuExampleSecondary extends Component {
         window.removeEventListener('resize', this.updateDimensions);
       }
     render() {
+        const { activeItem } = this.state
+        const { t } = this.props;
         return (
             <div id="outer-container">
+                <Helmet>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);background-size: cover}'}</style>
+                </Helmet>
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
+                <div className="contact_title">{t('contact.title')}</div>
+                <div className="contact_subtitle">213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017</div>
                 <Grid centered>
                 <Grid.Row id="row1" >
-                    <Grid.Column mobile={16} tablet={16} computer={8}>
-                        contact
+                    <Grid.Column mobile={16} tablet={8} computer={5} >
+                        <div className="contact_form_icon">
+                            <img src={email_logo}/>
+                        </div>
+                    
+                    </Grid.Column>
+                    <Grid.Column mobile={16} tablet={8} computer={6} >
+                        <div className="contact_form">
+                            <Contactform />
+                        </div>
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -30,3 +77,7 @@ export default class MenuExampleSecondary extends Component {
         )
     }
 }
+Contact.propTypes = {
+    t: PropTypes.func.isRequired,
+  };
+  export default translate(Contact);

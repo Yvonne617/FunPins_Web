@@ -10,10 +10,12 @@ import './style/Menu.css';
 import ios_bnt from './img/ios_download_btn.png';
 import android_bnt from './img/android_download_btn.png';
 import PropTypes from 'prop-types';
+import {Helmet} from 'react-helmet';
 import {
   setTranslations,
   setDefaultLanguage,
   setLanguageCookie,
+  getLanguages,
   setLanguage,
   translate,
 } from 'react-switch-lang';
@@ -44,7 +46,11 @@ class Home extends React.Component {
     render(){
        const { t } = this.props;
        return(
+           
             <div id="outer-container">
+                <Helmet>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);background-size: cover}'}</style>
+                </Helmet>
                <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                <main id="page-wrap">
                <Grid centered>
@@ -74,7 +80,7 @@ class Home extends React.Component {
 
                </Grid.Row>
                 <Grid.Row className="lan">
-                    Language: &nbsp;<span onClick={this.handleSetLanguage('en')}>English</span>&nbsp;|&nbsp;<span  onClick={this.handleSetLanguage('cn')}>Chinese</span>
+                    Language: &nbsp;<span onClick={this.handleSetLanguage('en')}>English&nbsp;</span>&nbsp;|&nbsp;<span  onClick={this.handleSetLanguage('cn')}>&nbsp;Chinese</span>
                 </Grid.Row>
                </Grid>
                 </main>          

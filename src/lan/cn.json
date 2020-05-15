@@ -1,13 +1,23 @@
 {
     "home": {
       "title": "用地图点亮生活",
-      "intro":"点圈是一款基于地图的社交app,好友间的地图分享让分享更高效。"
+      "intro":"点圈是一款基于地图的社交app,好友间的地图分享让分享更高效。海外华人都在用的app。"
     },
     "nav":{
         "nav_home":"主页",
         "nav_news":"新闻",
         "nav_refer":"邀请好友",
         "nav_contact":"联系我们"
-    } 
+    },
+    "contact":{
+      "title":"有什么问题吗?",
+      "subtitle":"213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017",
+      "f_name":"名",
+      "l_name":"姓",
+      "email":"邮箱",
+      "message":"信息",
+      "submit":"提交"
+    }
+   
    
 }

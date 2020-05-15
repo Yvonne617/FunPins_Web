@@ -8,6 +8,15 @@
         "nav_news":"News",
         "nav_refer":"Refer A Friend",
         "nav_contact":"Contact Us"
-    } 
+    },
+    "contact":{
+      "title":"HAVE SOME QUESTIONS?",
+      "subtitle":"213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017",
+      "f_name":"First name",
+      "l_name":"Last name",
+      "email":"Email",
+      "message":"Message",
+      "submit":"Submit"
+    }
    
 }

@@ -51,8 +51,14 @@ body{
 .menu{
   margin-bottom: 150px;
   right:10px;
-  transform: translate(-20px, 5px);
+  background-color:rgb(61, 56, 56) ;
   display:block;
+}
+.ui.secondary.menu{
+  background-color:rgb(61, 56, 56) ;
+}
+.ui.secondary.menu{
+  background-color:rgb(61, 56, 56) !important;
 }
 .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg{
   width:20px;
@@ -61,9 +67,18 @@ body{
   color:white;
   transform: translate(1px, -15px);
   display:inline-block;
-  font-family: 'Balsamiq Sans', cursive;
-  font-size: 1.2em;
+  /* font-family: 'Balsamiq Sans', cursive; */
+  font-size: 1.0em;
 
+}
+input,textarea{
+  border-radius: 20px !important;
+}
+#form-textarea-control-opinion{
+  height: 200px !important;
+}
+.contact_form_icon{
+  margin-top:50px;
 }
 .intro {
   color:white;
@@ -123,7 +138,29 @@ body{
   }
 }
 
+/* contact page */
+.contact_form{
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  padding: 20px 0px 20px 50px;
+}
+.contact_title{
+  text-align: center;
+  font-size: 3em;
+  margin-top: 120px;
+  color:white;
+}
 
+.contact_subtitle{
+  text-align: center;
+  margin-top:30px;
+  color:white;
+}
+.ui.form .field>label{
+  color:white !important;
+}
+.contact_form_icon{
+  text-align: center !important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
