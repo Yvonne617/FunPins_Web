@@ -51,15 +51,15 @@ class Contact extends Component {
         return (
             <div id="outer-container">
                 <Helmet>
-                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);background-size: cover}'}</style>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);'}</style>
                 </Helmet>
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
                 <div className="contact_title">{t('contact.title')}</div>
                 <div className="contact_subtitle">213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017</div>
                 <Grid centered>
-                <Grid.Row id="row1" >
-                    <Grid.Column mobile={16} tablet={8} computer={5} >
+                <Grid.Row id="row2" >
+                    <Grid.Column mobile={16} tablet={7} computer={5} >
                         <div className="contact_form_icon">
                             <img src={email_logo}/>
                         </div>
