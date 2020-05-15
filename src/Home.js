@@ -54,10 +54,7 @@ export default class Home extends React.Component {
                </Grid.Row>
 
                </Grid>
-                </main>
-
-            
-                      
+                </main>          
             </div>
        )
    

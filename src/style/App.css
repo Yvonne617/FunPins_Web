@@ -42,12 +42,19 @@ body{
 .menu{
   margin-bottom: 150px;
   right:10px;
+  transform: translate(-20px, 5px);
+  display:block;
 }
 .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg{
   width:20px;
 }
-.menu a p{
+.menu a span{
   color:white;
+  transform: translate(1px, -15px);
+  display:inline-block;
+  font-family: 'Balsamiq Sans', cursive;
+  font-size: 1.2em;
+
 }
 .intro {
   color:white;
@@ -95,6 +102,10 @@ body{
 .ui.image img{
   border-radius: 9px;
   opacity: 0.7;
+}
+.menu_btn{
+  display: inline;
+  margin-right: 1.5em;
 }
 
 @media (max-width: 500px) {
