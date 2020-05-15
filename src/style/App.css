@@ -1,6 +1,8 @@
+
 .App {
   text-align: center;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -97,7 +99,8 @@ input,textarea{
   background-image: url('/border.png');
   width:600px;
   height:700px;
-  background-size: cover;
+  background-size:cover;
+  background-repeat: no-repeat;
   margin: auto auto;
 }
 .parent2{

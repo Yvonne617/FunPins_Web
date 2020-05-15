@@ -51,7 +51,7 @@ class Contact extends Component {
         return (
             <div id="outer-container">
                 <Helmet>
-                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);'}</style>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);min-height:100%'}</style>
                 </Helmet>
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
