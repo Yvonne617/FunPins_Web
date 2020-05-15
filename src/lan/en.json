@@ -1,0 +1,13 @@
+{
+    "home": {
+      "title": "Connecting Chinese with map",
+      "intro":"FunPins' mission is to provide an easy way for overseas Chinese to find great places that match their own taste and cultural background."
+    },
+    "nav":{
+        "nav_home":"Home",
+        "nav_news":"News",
+        "nav_refer":"Refer A Friend",
+        "nav_contact":"Contact Us"
+    } 
+   
+}

@@ -9,9 +9,28 @@ import './style/App.css';
 import './style/Menu.css';
 import ios_bnt from './img/ios_download_btn.png';
 import android_bnt from './img/android_download_btn.png';
-import $ from 'jquery';
+import PropTypes from 'prop-types';
+import {
+  setTranslations,
+  setDefaultLanguage,
+  setLanguageCookie,
+  setLanguage,
+  translate,
+} from 'react-switch-lang';
+import en from './lan/en.json';
+import cn from './lan/cn.json';
+ 
+// Do this two lines only when setting up the application
+setTranslations({ en, cn });
+setDefaultLanguage('en');
+ 
+// If you want to remember selected language
+setLanguageCookie();
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+    handleSetLanguage = (key) => () => {
+        setLanguage(key);
+      };
     state = { width: 0, height: 0 };
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -23,21 +42,23 @@ export default class Home extends React.Component {
         window.removeEventListener('resize', this.updateDimensions);
       }
     render(){
+       const { t } = this.props;
        return(
             <div id="outer-container">
                <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                <main id="page-wrap">
                <Grid centered>
                <Grid.Row id="row1" >
+                    <Grid.Column mobile={16} tablet={16} computer={1}></Grid.Column>
                     <Grid.Column mobile={16} tablet={16} computer={8}>
                         <div className="parent1">
                             <MyGallery/>
                         </div>
                     </Grid.Column>
-                    <Grid.Column mobile={16} tablet={16} computer={8} className="intro">
+                    <Grid.Column mobile={16} tablet={16} computer={5} className="intro">
                         <div className="parent2">
-                            <div style={{textAlignVertical: "center",textAlign: "center",}}>Connecting Chinese with map</div>
-                            <div className="intro_detail" style={{textAlignVertical: "center",textAlign: "center",}}>FunPins' mission is to provide an easy way for overseas Chinese to find great places that match their own taste and cultural background. We create an app basing on map that enable you to explore recommendation from your friends and other Chinese.</div>
+                            <div style={{textAlignVertical: "center",textAlign: "center",}}>{t('home.title')}</div>
+                            <div className="intro_detail" style={{textAlignVertical: "center",textAlign: "center",}}>{t('home.intro')}</div>
                             <div className="download_bnts">
                                 <a className="ios_btn" href="https://apps.apple.com/us/app/%E7%82%B9%E5%9C%88/id1483535140">
                                 <img style={{width:"200px" ,height:"60px"}} src={ios_bnt} alt="Logo" />
@@ -49,10 +70,12 @@ export default class Home extends React.Component {
                         </div>
  
                     </Grid.Column>
-        
+                    <Grid.Column mobile={16} tablet={16} computer={2}></Grid.Column>
 
                </Grid.Row>
-
+                <Grid.Row className="lan">
+                    Language: &nbsp;<span onClick={this.handleSetLanguage('en')}>English</span>&nbsp;|&nbsp;<span  onClick={this.handleSetLanguage('cn')}>Chinese</span>
+                </Grid.Row>
                </Grid>
                 </main>          
             </div>
@@ -61,3 +84,8 @@ export default class Home extends React.Component {
     }
  }
  
+ Home.propTypes = {
+    t: PropTypes.func.isRequired,
+  };
+   
+  export default translate(Home);

@@ -4,8 +4,20 @@ import { Link } from 'react-router-dom';
 import hotpot_logo from './img/hotpot_icon.png'; 
 import soup_logo from './img/soup.png'; 
 import boba_logo from './img/milktea.png';
-import meat_logo from './img/meat.png'
-export default class MenuExampleSecondary extends Component {
+import meat_logo from './img/meat.png';
+import en from './lan/en.json';
+import cn from './lan/cn.json';
+import {
+  setTranslations,
+  setDefaultLanguage,
+  setLanguageCookie,
+  getLanguage,
+  setLanguage,
+  translate,
+} from 'react-switch-lang';
+import PropTypes from 'prop-types';
+setDefaultLanguage(getLanguage());
+class MenuExampleSecondary extends Component {
   state = { activeItem: 'home' }
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
@@ -13,33 +25,33 @@ export default class MenuExampleSecondary extends Component {
 
   render() {
     const { activeItem } = this.state
-
+    const { t } = this.props;
     return (
       <Menu secondary>
         <Menu.Menu position='right' >
         <Link to="/" className="menu_btn">
           <img style={{width:"50px",height:"50px"}} src={hotpot_logo} alt="Logo"/>
-          <span>Home</span>
+          <span>{t('nav.nav_home')}</span>
         </Link>
    
 
           <Link to="/News/" className="menu_btn">
             <img style={{width:"50px",height:"50px"}} src={soup_logo} alt="Logo" />
-            <span>News</span>
+            <span>{t('nav.nav_news')}</span>
           </Link>
  
           
 
           <Link to="/Refer/" className="menu_btn">
             <img style={{width:"50px",height:"50px"}} src={boba_logo} alt="Logo" />
-            <span>Refer a Friend</span>
+            <span>{t('nav.nav_refer')}</span>
           </Link>
     
         
          
           <Link to="/Contact/" className="menu_btn">
             <img style={{width:"50px",height:"50px"}} src={meat_logo} alt="Logo" />
-            <span>Contact Us</span>
+            <span>{t('nav.nav_contact')}</span>
           </Link>
         
          
@@ -49,3 +61,7 @@ export default class MenuExampleSecondary extends Component {
     )
   }
 }
+MenuExampleSecondary.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+export default translate(MenuExampleSecondary);
