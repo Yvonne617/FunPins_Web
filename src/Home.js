@@ -58,6 +58,8 @@ class Home extends React.Component {
                     <Grid.Column mobile={16} tablet={16} computer={8}>
                         <div className="parent1">
                             <MyGallery/>
+                            <img className="border" src="/border.png"></img>
+                           
                         </div>
                     </Grid.Column>
                     <Grid.Column mobile={16} tablet={16} computer={5} className="intro">
