@@ -6,6 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Grid, Image } from 'semantic-ui-react';
 import Contactform from './Contactform';
 import email_logo from './img/email.png';
+import firebase from './firebase';
 import {
     setTranslations,
     setDefaultLanguage,
@@ -34,6 +35,8 @@ const items = [
       extra: 'Extra',
     },
   ]
+
+
 class Contact extends Component {
     state = { width: 0, height: 0 };
     updateDimensions = () => {
@@ -41,6 +44,17 @@ class Contact extends Component {
       };
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
+        const db = firebase.firestore();
+        db.collection("users").doc("00000000000").get().then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+            console.log('Document data:', doc.data());
+          }
+        })
+        .catch(err => {
+          console.log('Error getting document', err);
+        });
       }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
