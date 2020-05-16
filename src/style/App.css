@@ -120,7 +120,7 @@ input,textarea{
 }
 .parent1{
   position: relative;
-  width:300px;
+  width:270px;
   height:550px;
   margin:80px auto;
 }
@@ -134,9 +134,9 @@ input,textarea{
 .image-gallery{
   position: absolute;
   height:90%;
-  width:90%;
-  top:50px;
-  left:20px;
+  width:87%;
+  top:70px;
+  left:18px;
   display: block; 
   margin: auto auto;
 }
