@@ -16,6 +16,7 @@ import {
     translate,
   } from 'react-switch-lang';
 import PropTypes from 'prop-types';
+import './style/Contact.css';
 setDefaultLanguage(getLanguage());
 const items = [
     {
