@@ -97,10 +97,11 @@ input,textarea{
 }
 
 .parent2{
-  margin: 30px auto;
+  margin: 30px 20px;
 }
 .image-gallery-slide img {
   width: 230px;
+  min-height: 418px !important; 
 }
 
 .download_bnts{
@@ -109,6 +110,7 @@ input,textarea{
 }
 .ios_btn,.and_btn{
   margin:0 20px 0 0;
+  display: inline-block;
 }
 .ui.image img{
   border-radius: 9px;

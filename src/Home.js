@@ -48,7 +48,7 @@ class Home extends React.Component {
        return(
             <div id="outer-container">
                 <Helmet>
-                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);min-height:100%;background-size: cover;}'}</style>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);-webkit-backdrop-filter:blur(5px);min-height:100%;background-size: cover;}'}</style>
                 </Helmet>
                <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                <main id="page-wrap">
@@ -68,10 +68,10 @@ class Home extends React.Component {
                             <div className="intro_detail" style={{textAlignVertical: "center",textAlign: "center",}}>{t('home.intro')}</div>
                             <div className="download_bnts">
                                 <a className="ios_btn" href="https://apps.apple.com/us/app/%E7%82%B9%E5%9C%88/id1483535140">
-                                <img style={{width:"200px" ,height:"60px"}} src={ios_bnt} alt="Logo" />
+                                <img style={{width:"150px" ,height:"48"}} src={ios_bnt} alt="Logo" />
                                 </a>
                                 <a className="and_btn" href="https://apps.apple.com/us/app/%E7%82%B9%E5%9C%88/id1483535140">
-                                <img style={{width:"200px",height:"60px"}} src={android_bnt} alt="Logo" />
+                                <img style={{width:"150px",height:"48px"}} src={android_bnt} alt="Logo" />
                                 </a>
                              </div>
                         </div>
