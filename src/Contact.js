@@ -6,6 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Grid, Image } from 'semantic-ui-react';
 import Contactform from './Contactform';
 import email_logo from './img/email.png';
+import firebase from './firebase';
 import {
     setTranslations,
     setDefaultLanguage,
@@ -34,6 +35,8 @@ const items = [
       extra: 'Extra',
     },
   ]
+
+
 class Contact extends Component {
     state = { width: 0, height: 0 };
     updateDimensions = () => {
@@ -41,6 +44,17 @@ class Contact extends Component {
       };
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
+        const db = firebase.firestore();
+        db.collection("users").doc("00000000000").get().then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+            console.log('Document data:', doc.data());
+          }
+        })
+        .catch(err => {
+          console.log('Error getting document', err);
+        });
       }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
@@ -51,15 +65,15 @@ class Contact extends Component {
         return (
             <div id="outer-container">
                 <Helmet>
-                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);background-size: cover}'}</style>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);min-height:100%'}</style>
                 </Helmet>
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
                 <div className="contact_title">{t('contact.title')}</div>
                 <div className="contact_subtitle">213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017</div>
                 <Grid centered>
-                <Grid.Row id="row1" >
-                    <Grid.Column mobile={16} tablet={8} computer={5} >
+                <Grid.Row id="row2" >
+                    <Grid.Column mobile={16} tablet={7} computer={5} >
                         <div className="contact_form_icon">
                             <img src={email_logo}/>
                         </div>

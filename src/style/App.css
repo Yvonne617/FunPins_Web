@@ -1,6 +1,8 @@
+
 .App {
   text-align: center;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -29,8 +31,7 @@
 }
 
 body{
-  display:table;
-  width: 100%;
+  height: auto !important;
 }
 #row1{
   margin-top: 100px;
@@ -89,39 +90,25 @@ input,textarea{
   text-align: center;
 }
 .intro_detail{
-  margin: 50px 0px;
+  margin: 50px 20px 50px 20px;
   font-size: 20px;
   line-height: 25px;
   font-family: 'Roboto', sans-serif;
 }
-.parent1{
-  background-image: url('/border.png');
-  width:600px;
-  height:700px;
-  background-size: cover;
-  margin: auto auto;
-}
+
 .parent2{
-  width: 500px;
   margin: 30px auto;
 }
 .image-gallery-slide img {
-  height: 500px;
+  width: 230px;
 }
-.image-gallery {
-  width: 300px;
-  top:100px;
-  left:180px;
 
-}
 .download_bnts{
-  width:200px;
-  height: 100px;
-  margin-top: 80px;
-  display: flex;
+  vertical-align:middle; 
+  text-align:center
 }
-.ios_btn{
-  margin:0 20px 0 70px;
+.ios_btn,.and_btn{
+  margin:0 20px 0 0;
 }
 .ui.image img{
   border-radius: 9px;
@@ -131,17 +118,57 @@ input,textarea{
   display: inline;
   margin-right: 1.5em;
 }
-
+.parent1{
+  position: relative;
+  width:270px;
+  height:550px;
+  margin:80px auto;
+}
+.border{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  display: block; 
+  margin: auto auto;
+}
+.image-gallery{
+  position: absolute;
+  height:90%;
+  width:87%;
+  top:70px;
+  left:18px;
+  display: block; 
+  margin: auto auto;
+}
 @media (max-width: 500px) {
-  .parent1{
-      margin-left: 0 !important;
+  .download_bnts img{
+    width:130px !important;
+    height:40px !important;
+  }
+  /* .image-gallery{
+    width: 200px;
+    left:114px;
+    top:0px;
+  } */
+
+  .contact_title{
+    font-size: 2em !important; 
+  }
+  .contact_subtitle{
+    margin:20px 30px;
+  }
+  #row1{
+    margin-top: 100px;
+  }
+  .contact_form{
+    padding: 20px 50px 20px 50px !important;
   }
 }
 
 /* contact page */
 .contact_form{
   /* background-color: rgba(255, 255, 255, 0.5); */
-  padding: 20px 0px 20px 50px;
+  padding: 20px 20px 20px 50px;
 }
 .contact_title{
   text-align: center;
@@ -161,6 +188,7 @@ input,textarea{
 .contact_form_icon{
   text-align: center !important;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

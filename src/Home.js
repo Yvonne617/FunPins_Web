@@ -46,10 +46,9 @@ class Home extends React.Component {
     render(){
        const { t } = this.props;
        return(
-           
             <div id="outer-container">
                 <Helmet>
-                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);background-size: cover}'}</style>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);min-height:100%;background-size: cover;}'}</style>
                 </Helmet>
                <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                <main id="page-wrap">
@@ -59,6 +58,8 @@ class Home extends React.Component {
                     <Grid.Column mobile={16} tablet={16} computer={8}>
                         <div className="parent1">
                             <MyGallery/>
+                            <img className="border" src="/border.png"></img>
+                           
                         </div>
                     </Grid.Column>
                     <Grid.Column mobile={16} tablet={16} computer={5} className="intro">
