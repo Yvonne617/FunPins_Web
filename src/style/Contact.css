@@ -1,0 +1,39 @@
+/* contact page */
+.contact_form{
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    padding: 20px 20px 20px 50px;
+  }
+  .contact_title{
+    text-align: center;
+    font-size: 3em;
+    margin-top: 120px;
+    color:white;
+  }
+  
+  .contact_subtitle{
+    text-align: center;
+    margin-top:30px;
+    color:white;
+  }
+  .ui.form .field>label{
+    color:white !important;
+  }
+  .contact_form_icon{
+    text-align: center !important;
+    margin-top:50px;
+  }
+
+  @media (max-width: 500px) {
+    .contact_title{
+      font-size: 2em !important; 
+    }
+    .contact_subtitle{
+      margin:20px 30px;
+    }
+    #row1{
+      margin-top: 100px;
+    }
+    .contact_form{
+      padding: 20px 50px 20px 50px !important;
+    }
+  }
