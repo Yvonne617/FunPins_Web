@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from './topmenu';
 import "semantic-ui-css/semantic.min.css";
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Image, List, Divider } from 'semantic-ui-react';
 export default class MenuExampleSecondary extends Component {
     state = { width: 0, height: 0 };
     updateDimensions = () => {
@@ -13,6 +13,7 @@ export default class MenuExampleSecondary extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
       }
+    
     render() {
         return (
             <div id="outer-container">
@@ -21,7 +22,17 @@ export default class MenuExampleSecondary extends Component {
                 <Grid centered>
                 <Grid.Row id="row1" >
                     <Grid.Column mobile={16} tablet={16} computer={8}>
-                        news
+                    
+                        <List divided bulleted>
+                        <List.Item>
+                        <List.Content>
+                            <a href='https://github.com/fly51fly/Practical_Python_Programming'>Test link_1</a>
+                        <List.Description as='a'>Updated 10 mins ago</List.Description>
+                        </List.Content>
+                        </List.Item>
+                        
+                        </List>
+                    
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>
