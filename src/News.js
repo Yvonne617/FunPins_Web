@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import Menu from './topmenu';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image, List, Divider } from 'semantic-ui-react';
+import News_article from './News_article'
+import data from './data/articles.json'
 export default class MenuExampleSecondary extends Component {
-    state = { width: 0, height: 0 };
+    constructor(props) {
+        super(props);
+        this.state = {
+          articles: [],
+          width: 0, 
+          height: 0
+        }
+      }
+    componentWillReceiveProps(nextProps){
+        this.setState({articles: data.articles})
+    }
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       };
@@ -13,8 +25,17 @@ export default class MenuExampleSecondary extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
       }
-    
+    renderArticles() {
+        
+        return this.state.articles.map((article, index) => {
+            return (
+                <News_article key={index} article={article} />
+            )
+        });
+    }
+
     render() {
+        const articles = this.renderArticles();
         return (
             <div id="outer-container">
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
@@ -22,17 +43,9 @@ export default class MenuExampleSecondary extends Component {
                 <Grid centered>
                 <Grid.Row id="row1" >
                     <Grid.Column mobile={16} tablet={16} computer={8}>
-                    
-                        <List divided bulleted>
-                        <List.Item>
-                        <List.Content>
-                            <a href='https://github.com/fly51fly/Practical_Python_Programming'>Test link_1</a>
-                        <List.Description as='a'>Updated 10 mins ago</List.Description>
-                        </List.Content>
-                        </List.Item>
-                        
-                        </List>
-                    
+                    <List divided selection>
+                        {articles}
+                    </List>
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>
