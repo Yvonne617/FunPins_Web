@@ -46,7 +46,7 @@ class Contact extends Component {
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
         const db = firebase.firestore();
-        db.collection("users").doc("00000000000").get().then(doc => {
+        db.collection("pins").doc("00BF7F81-7CFE-4FF4-BDE4-E10D049AD7DD").get().then(doc => {
           if (!doc.exists) {
             console.log('No such document!');
           } else {
