@@ -5,15 +5,17 @@
             "id": 0,
             "date": "2019-12-12",
             "author": "admin",
+            "title":"test post 1",
             "content": "this is a test page.",
-            "url": "htttps://github.com"
+            "url": "#"
         },
         {
             "id": 1,
             "date": "2019-12-12",
             "author": "admin",
+            "title":"test post 2",
             "content": "this is a test page again.",
-            "url": "htttps://github.com"
+            "url": "#"
         }
     ]
 }

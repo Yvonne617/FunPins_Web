@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Menu from './topmenu';
+import {Helmet} from 'react-helmet';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image, List, Divider } from 'semantic-ui-react';
 import News_article from './News_article'
@@ -8,16 +9,16 @@ export default class MenuExampleSecondary extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          articles: [],
+          articles: data.articles,
           width: 0, 
           height: 0
         }
       }
-    componentWillReceiveProps(nextProps){
-        this.setState({articles: data.articles})
-    }
+    // componentWillReceiveProps(Props){
+    //     this.setState({articles: data.articles})
+    // }
     updateDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        this.setState({ width: window.innerWidth, height: window.innerHeight,});
       };
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
@@ -38,14 +39,19 @@ export default class MenuExampleSecondary extends Component {
         const articles = this.renderArticles();
         return (
             <div id="outer-container">
+                <Helmet>
+                    <style>{'body {background-image:url(/bg.jpeg);backdrop-filter: blur(5px);-webkit-backdrop-filter:blur(5px);min-height:100%'}</style>
+                </Helmet>
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
                 <Grid centered>
                 <Grid.Row id="row1" >
                     <Grid.Column mobile={16} tablet={16} computer={8}>
+                    <div>
                     <List divided selection>
                         {articles}
                     </List>
+                    </div>
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>
