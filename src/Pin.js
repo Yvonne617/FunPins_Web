@@ -10,19 +10,19 @@ import 'react-sticky-header/styles.css';
 import { Table } from 'semantic-ui-react'
 import StickyHeader from 'react-sticky-header';
 import openapp from './downloadApp';
-import VideoPlayer from 'react-simple-video-player';
 import 'firebase/firestore'
 import 'firebase/functions';
 class Pin extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:{},video:{},price:{},place_id:{},business_number:{},business_status:{}};
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/GbkbJDMpbAWAY6fhy3clFqFki8z2%2FpinImage%2F21B5C1C5-50E6-4F19-B757-CEF6E67A2BDE.jpeg?alt=media&token=1da3860f-0828-46dd-ab01-b2aa1633a26d"],video:{},price:{},place_id:{},placeName:{},business_number:{},business_status:{}};
       }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       };
       
     componentDidMount() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
         window.addEventListener('resize', this.updateDimensions);
         const db = firebase.firestore();
         const checkPlaceAttributes = firebase.functions().httpsCallable('checkPlaceAttributes');
@@ -40,7 +40,6 @@ class Pin extends Component {
             this.setState({user:this.state.data.owner})
             this.setState({video:this.state.data.video})
             this.setState({images:this.state.data.images.map((item) => item.uri)})
-            this.setState({price:this.state.data.attributes[1].text.toString()})
             this.setState({place_id:this.state.data.place_id})
             db.collection("users").doc(this.state.user.toString()).get().then(doc => {
                 if (!doc.exists) {
@@ -56,18 +55,19 @@ class Pin extends Component {
             checkPlaceAttributes({placeId:this.state.place_id.toString(),curTime:cur_time}).then(result => {
                   // Read result of the Cloud Function.
                 var res = result.data;
+                console.log(result)
                 var place_info = JSON.parse(res.data);
-                console.log(place_info)
                 var business_status = place_info.business_status;
-                console.log(place_info.opening_hours.weekday_text);
-                this.setState({business_number:place_info.formatted_phone_number.toString()});
+                this.setState({business_number:place_info.formatted_phone_number});
+                this.setState({price:place_info.price_level});
+                this.setState({placeName:place_info.name})
                 if(business_status == "OPERATIONAL"){
                     if(place_info.opening_hours.weekday_text){
-                        var open_right_now = result.open_now;
+                        var open_right_now = res.open_now;
                         if(open_right_now){
                             this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+"，营业中"})
                         }else{
-                            this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+",已关门"})
+                            this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+", 已关门"})
                         }
                        
                     }else{
@@ -78,7 +78,7 @@ class Pin extends Component {
                 }else if(business_status == "CLOSED_PERMANENTLY"){
                     this.setState({business_status:"永久停业"})
                 }else{
-                    this.setState({business_status:"无"})
+                    this.setState({business_status:{}})
                 }
 
           });
@@ -127,8 +127,8 @@ class Pin extends Component {
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div className="parent3">
                         {/* <MyGaller height={this.state.width?this.state.width:window.innerWidth}/>       */}
-                        { !this.state.video ? <Carousel showIndicators={this.state.images.length>1?true:false} images={this.state.images} /> : null }
-                        { this.state.video ? <VideoPlayer url={this.state.video} poster={this.state.images[0]} width={400} height={300}/>: null}
+                        <Carousel isvideo={this.state.video} video={this.state.video} videoposter={this.state} showIndicators={this.state.images.length>1?true:false} images={this.state.images}/> 
+                      
                                  
                     </div> 
                 </Grid.Column>
@@ -141,44 +141,48 @@ class Pin extends Component {
                         </div>
                         <hr></hr>
                         <div className="pin_intro">
-                            <h1>{this.state.data.placeName}</h1> 
                             <h3>{this.state.data.title}</h3>                  
                             <p>{this.state.data.subTitle}</p>
                         </div>
                     </div>
                     <div id="otherinfo">
-                    {/* <div>
-                            <img src="/online-shop.png" className="otherintro_icon"/>
-                            <span>{this.state.data.address}</span>
-                    </div>
-                    <div>
-                        <img src="/online-shop.png" className="otherintro_icon"/>{this.state.price.toString()}
-                    </div> */}
                     <table id="otherinfo_table">
+            {this.state.placeName ?
                         <tr>
                             <td className="info_name"><img src="/online-shop.png" className="otherintro_icon"/></td>
                             <td className="info_td">
-                                {this.state.data.address}
+                                {this.state.placeName.toString()}
                             </td>
                         </tr>
-                        <tr>
+                        :""
+            }
+            { this.state.price ?
+                        <tr >
                             <td className="info_name"><img src="/finance.png" className="otherintro_icon"/></td>
                             <td className="info_td">
-                                {this.state.price.toString()}
+                                <img src={"/dollar"+this.state.price.toString()+".png"} className="otherintro_icon"/>
                             </td>
                         </tr>
+                    :""
+            }
+            {this.state.business_number ?
                         <tr>
                             <td className="info_name"><img src="/call.png" className="otherintro_icon"/></td>
                             <td className="info_td">
                                 {this.state.business_number.toString()}
                             </td>
                         </tr>
+                    :""
+            }
+            {this.state.business_status ?
                         <tr>
                             <td className="info_name"><img src="/clock.png" className="otherintro_icon"/></td>
                             <td className="info_td">
                                 {this.state.business_status.toString()}
                             </td>
                         </tr>
+                    : ""
+            }
                     </table>
                     </div>
                     

@@ -1,11 +1,11 @@
 #page-wrap2{
-margin:100px auto 100px auto;
+    margin:40px auto 60px auto;
 }
 .parent3{
     position: relative;
     /* width:400px !important; */
     /* height:550px; */
-    margin:10px auto;
+    margin:30px 10px 20px 10px;
     background-color:rgb(255, 210, 0);
   }
 .carousel .slide{
@@ -14,33 +14,32 @@ margin:100px auto 100px auto;
 .image-slider{
     margin-top:150px !important;
 }
-
-
-@media (max-width: 500px) {
-
-.author,.pin_intro{
+#content,#otherinfo{
+    margin:30px 10px;
+    padding:20px;
+    background-color:white;
+    border-radius: 15px;
+}
+@media (max-width: 765px) {
+    .author,.pin_intro{
         margin:10px 5px !important;
     }
-    .carousel .slide img {
-        max-height: 400px;  /* change this to whatever you want */
-        width: auto;
+    #content{
+        margin:0px 10px;
+        padding:20px;
+        background-color:white;
+        border-radius: 15px;
     }
-    .parent3{
-        margin:30px 10px 20px 10px;
+    #otherinfo{
+        margin:10px 10px;
     }
-    #page-wrap2{
-        margin:40px auto 60px auto;
-        }
 }
 div{
     background-position: center;
 }
 
 
-.carousel .slide img {
-    max-width: 300px;  /* change this to whatever you want */
-    height: auto;
-}
+
 #topbanner{
     position:fixed;background:white;width:100%;
 }
@@ -60,12 +59,7 @@ div{
     margin-left: 5px;
     font-size: 1.3em;
 }
-#content,#otherinfo{
-    margin:10px 10px;
-    padding:20px;
-    background-color:white;
-    border-radius: 15px;
-}
+
 
 .Header_title{
     color:white;
@@ -120,10 +114,8 @@ div{
 }
 
 .carousel .slide img {
-    /* max-height: 300px; 
-    width: auto; */
-    max-width: 400px;
-    max-height:350px;
+    height: 350px; 
+    max-width: 430px;
     border-radius: 20px;
 }
 .otherintro_icon{
