@@ -15,7 +15,7 @@ import 'firebase/functions';
 class Pin extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/GbkbJDMpbAWAY6fhy3clFqFki8z2%2FpinImage%2F21B5C1C5-50E6-4F19-B757-CEF6E67A2BDE.jpeg?alt=media&token=1da3860f-0828-46dd-ab01-b2aa1633a26d"],video:{},price:{},place_id:{},placeName:{},business_number:{},business_status:{}};
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.jpg"],video:{},price:{},place_id:{},placeName:{},business_number:{},business_status:{}};
       }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -99,8 +99,8 @@ class Pin extends Component {
         const generateDynamicLink = firebase.functions().httpsCallable('generateDynamicLinkV2');
         console.log(this.props.match.params.id)
         generateDynamicLink({pinId:this.props.match.params.id.toString()}).then(result => {
-            window.location = result.data;
-        console.log(result.data)
+            window.location = result.data.shortLink;
+        console.log(result.data.shortLink)
         })
     }
     render() {
