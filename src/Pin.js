@@ -95,7 +95,14 @@ class Pin extends Component {
         window.removeEventListener('resize', this.updateDimensions);
         
       }
-
+     createDynamicLink = () =>{
+        const generateDynamicLink = firebase.functions().httpsCallable('generateDynamicLinkV2');
+        console.log(this.props.match.params.id)
+        generateDynamicLink({pinId:this.props.match.params.id.toString()}).then(result => {
+            window.location = result.data;
+        console.log(result.data)
+        })
+    }
     render() {
         return (
             <div id="outer-container2">
@@ -109,8 +116,8 @@ class Pin extends Component {
                                 <div id="dq">点圈,</div>
                                 <div id="dt">用地图标记生活</div>
                             </div>
-                            <div id="openappbtn" onClick={openapp}>
-                                <div id="openapp" onClick={openapp}>打开App</div>
+                            <div id="openappbtn" onClick={this.createDynamicLink}>
+                                <div id="openapp" >打开App</div>
                             </div>
                            
                         </div>
