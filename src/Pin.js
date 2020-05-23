@@ -9,13 +9,12 @@ import Menu from './topmenu';
 import 'react-sticky-header/styles.css';
 import { Table } from 'semantic-ui-react'
 import StickyHeader from 'react-sticky-header';
-import openapp from './downloadApp';
 import 'firebase/firestore'
 import 'firebase/functions';
 class Pin extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.jpg"],video:{},price:{},place_id:{},placeName:{},business_number:{},business_status:{}};
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,placeName:null,business_number:null,business_status:null};
       }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -46,6 +45,7 @@ class Pin extends Component {
                   console.log('No such user!');
                 } else {
                   this.setState({userinfo: doc.data()});
+                  console.log(this.state.userinfo)
                 }
               })
               .catch(err => {
@@ -55,14 +55,16 @@ class Pin extends Component {
             checkPlaceAttributes({placeId:this.state.place_id.toString(),curTime:cur_time}).then(result => {
                   // Read result of the Cloud Function.
                 var res = result.data;
-                console.log(result)
-                var place_info = JSON.parse(res.data);
-                var business_status = place_info.business_status;
-                this.setState({business_number:place_info.formatted_phone_number});
-                this.setState({price:place_info.price_level});
-                this.setState({placeName:place_info.name})
+                if(res){
+                    var place_info = JSON.parse(res.data);
+                    var business_status = place_info.business_status;
+                    this.setState({business_number:place_info.formatted_phone_number});
+                    this.setState({price:place_info.price_level});
+                    this.setState({placeName:place_info.name})
+                }
+                
                 if(business_status == "OPERATIONAL"){
-                    if(place_info.opening_hours.weekday_text){
+                    if(place_info.opening_hours && place_info.opening_hours.weekday_text){
                         var open_right_now = res.open_now;
                         if(open_right_now){
                             this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+"，营业中"})
@@ -78,7 +80,7 @@ class Pin extends Component {
                 }else if(business_status == "CLOSED_PERMANENTLY"){
                     this.setState({business_status:"永久停业"})
                 }else{
-                    this.setState({business_status:{}})
+                    this.setState({business_status:null})
                 }
 
           });
@@ -106,6 +108,9 @@ class Pin extends Component {
     render() {
         return (
             <div id="outer-container2">
+                <Helmet>
+                    <title>标记详情</title>
+                </Helmet>
                 <StickyHeader
                     // This is the sticky part of the header.
                     header={
@@ -113,8 +118,8 @@ class Pin extends Component {
                         <div className="Header_title">
                             <div id="funpinsheader">
                                 <img id="dqlogo" src="/dianquanLogo.png"></img>
-                                <div id="dq">点圈,</div>
-                                <div id="dt">用地图标记生活</div>
+                                <div id="dq" className="pintitle">点圈,</div>
+                                <div id="dt" className="pinsubtitle">用地图标记生活</div>
                             </div>
                             <div id="openappbtn" onClick={this.createDynamicLink}>
                                 <div id="openapp" >打开App</div>
@@ -134,21 +139,22 @@ class Pin extends Component {
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div className="parent3">
                         {/* <MyGaller height={this.state.width?this.state.width:window.innerWidth}/>       */}
-                        <Carousel isvideo={this.state.video} video={this.state.video} videoposter={this.state} showIndicators={this.state.images.length>1?true:false} images={this.state.images}/> 
-                      
-                                 
+                        <Carousel isvideo={this.state.video} video={this.state.video} showIndicators={this.state.images.length>1?true:false} images={this.state.images}/>                
                     </div> 
                 </Grid.Column>
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div id="content">
                         <div className="author">
-                        <Image className="author_icon" src={this.state.userinfo.avatar} size='small' circular />
+                        <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
                         <span className="author_name">{this.state.userinfo.name}</span>
-                        <span className="author_intro">{this.state.userinfo.badge}</span>
+                        <span className="author_intro">
+                            <img className="author_icon" src={this.state.userinfo.badge+'.png'} />
+                            <span id="badge">{this.state.userinfo.badge}</span>
+                        </span>
                         </div>
                         <hr></hr>
                         <div className="pin_intro">
-                            <h3>{this.state.data.title}</h3>                  
+                            <p className="pin_title">{this.state.data.title}</p>                  
                             <p>{this.state.data.subTitle}</p>
                         </div>
                     </div>
@@ -191,7 +197,14 @@ class Pin extends Component {
                     : ""
             }
                     </table>
+                <div className="blurmap-container">
+                    <div className="blurmap"></div>
+                    <div className="blurmap-text" onClick={this.createDynamicLink}>
+                        下载点圈app，查看我的宝藏推荐地图
                     </div>
+                </div>
+               
+            </div>
                     
                 </Grid.Column>
             </Grid.Row>

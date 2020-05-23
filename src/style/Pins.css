@@ -84,17 +84,7 @@ div{
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
-#dq{
-    font-size: 17px;
-    position: absolute;
-    left:50px;
-    top:35%;
-}
-#dt{
-    position: absolute;
-    left:100px;
-    top:40%;
-}
+
 #funpinsheader{
     width:200px;
     height: 60px;
@@ -114,10 +104,26 @@ div{
 }
 
 .carousel .slide img {
-    height: 350px; 
-    max-width: 430px;
-    border-radius: 20px;
+    /* width:500px !important; */
+    /* height:100%; */
+    margin:auto auto;
+    position: relative;
+    width:100%;
+    height:100%;
+    display: block;
+    object-fit: contain;
 }
+.imgcontainer{
+    height: 380px;
+    width:100%;
+    max-width: 400px;
+    overflow: hidden;
+    margin: auto auto;
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
 .otherintro_icon{
     width:35px;
     height:35px;
@@ -134,4 +140,66 @@ div{
 }
 .control-dots{
     padding: 0px !important;
+}
+#badge{
+    transform: translate(0px,-15px);
+    display: inline-block;
+}
+.pintitle{
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.4em !important;
+    position: absolute;
+    left:50px;
+    top:35%;
+}
+.pinsubtitle{
+    position: absolute;
+    font-size: 1.2em !important;
+    left:100px;
+    font-family: 'Ma Shan Zheng', cursive;
+    top:36%;
+}
+.blurmap{
+    background-image: url("/blurmap.png");
+    background-size:400px 250px; 
+
+    /* Add the blur effect */
+
+  
+    /* Full height */
+    height: 250px;
+    width:100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.blurmap-text{
+    color: black;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    bottom:-30px;
+    text-align: center;
+    font-size: 1.2em !important;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+.blurmap-container{
+    width:100%;
+    position: relative;
+    height:250px;
+    padding: 0px;
+}
+.author_name{
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+.pin_title{
+    font-size: 1.5em !important;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    margin-bottom: 5px !important;
 }

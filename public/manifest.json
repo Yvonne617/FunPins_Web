@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "点圈，用地图标记生活",
+  "name": "Funpins",
   "icons": [
     {
       "src": "favicon.ico",
