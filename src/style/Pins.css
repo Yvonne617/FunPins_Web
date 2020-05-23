@@ -146,34 +146,31 @@ div{
     display: inline-block;
 }
 .pintitle{
-    font-family: 'Ma Shan Zheng', cursive;
+    font-family:Pudding;
     font-size: 1.4em !important;
     position: absolute;
     left:50px;
     top:35%;
+
 }
 .pinsubtitle{
     position: absolute;
     font-size: 1.2em !important;
     left:100px;
-    font-family: 'Ma Shan Zheng', cursive;
+    font-family: Pudding;
     top:36%;
 }
 .blurmap{
     background-image: url("/blurmap.png");
-    background-size:400px 250px; 
-
-    /* Add the blur effect */
-
-  
+    background-size:100% auto; 
     /* Full height */
-    height: 250px;
+    height: 300px;
     width:100%;
-  
+
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
-
+    border-radius: 20px;
 }
 .blurmap-text{
     color: black;
@@ -183,23 +180,25 @@ div{
     z-index: 2;
     width: 100%;
     padding: 20px;
-    bottom:-30px;
+    bottom:-60px;
     text-align: center;
     font-size: 1.2em !important;
-    font-family: 'ZCOOL KuaiLe', cursive;
-    font-family: 'Ma Shan Zheng', cursive;
+    font-family: Pudding
+    
 }
 .blurmap-container{
     width:100%;
     position: relative;
     height:250px;
-    padding: 0px;
+    padding: 0px 10px;
+    border-radius:15px;
 }
 .author_name{
-    font-family: 'ZCOOL KuaiLe', cursive;
+    font-family: Pudding
 }
 .pin_title{
-    font-size: 1.5em !important;
+    font-size: 1.4em !important;
+    margin-top:20px !important;
+    margin-bottom:20px !important;
     font-family: 'ZCOOL KuaiLe', cursive;
-    margin-bottom: 5px !important;
 }

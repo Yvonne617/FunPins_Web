@@ -197,18 +197,17 @@ class Pin extends Component {
                     : ""
             }
                     </table>
-                <div className="blurmap-container">
-                    <div className="blurmap"></div>
-                    <div className="blurmap-text" onClick={this.createDynamicLink}>
-                        下载点圈app，查看我的宝藏推荐地图
-                    </div>
-                </div>
-               
             </div>
                     
+            <div className="blurmap-container" onClick={this.createDynamicLink}>
+                    <div className="blurmap"></div>
+                    <div className="blurmap-text" >
+                        下载点圈app，查看我的宝藏推荐地图
+                    </div>
+                </div>  
                 </Grid.Column>
+      
             </Grid.Row>
-           
             </Grid>
             </main>
             </div>
@@ -216,3 +215,5 @@ class Pin extends Component {
     }
 }
 export default Pin;
+
+
