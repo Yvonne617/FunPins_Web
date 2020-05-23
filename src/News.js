@@ -9,7 +9,7 @@ export default class MenuExampleSecondary extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          articles: data.articles,
+          articles: [],
           width: 0, 
           height: 0
         }
@@ -18,9 +18,10 @@ export default class MenuExampleSecondary extends Component {
     //     this.setState({articles: data.articles})
     // }
     updateDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight,});
+        this.setState({ width: window.innerWidth, height: window.innerHeight});
       };
     componentDidMount() {
+        this.setState({articles: data.articles})
         window.addEventListener('resize', this.updateDimensions);
       }
     componentWillUnmount() {
@@ -46,9 +47,9 @@ export default class MenuExampleSecondary extends Component {
                 <main id="page-wrap">
                 <Grid centered>
                 <Grid.Row id="row1" >
-                    <Grid.Column mobile={16} tablet={16} computer={8}>
+                    <Grid.Column mobile={16} tablet={16} computer={10}>
                     <div>
-                    <List divided selection>
+                    <List selection bulleted>
                         {articles}
                     </List>
                     </div>
