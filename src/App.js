@@ -18,7 +18,7 @@ function App() {
       <Route path="/Refer" component={Refer} />
       <Route path="/Contact" component={Contact} />
       <Route path="/Pins/:id" component={Pin} />
-      <Route path="/News/:id" component={ShowArticle} />
+      <Route path="/News/:id" component={Pin} />
     </div>
   </Router>
   );

@@ -1,0 +1,137 @@
+#page-wrap2{
+    margin:40px auto 60px auto;
+}
+.parent3{
+    position: relative;
+    /* width:400px !important; */
+    /* height:550px; */
+    margin:30px 10px 20px 10px;
+    background-color:rgb(255, 210, 0);
+  }
+.carousel .slide{
+    background: none !important; 
+}
+.image-slider{
+    margin-top:150px !important;
+}
+#content,#otherinfo{
+    margin:30px 10px;
+    padding:20px;
+    background-color:white;
+    border-radius: 15px;
+}
+@media (max-width: 765px) {
+    .author,.pin_intro{
+        margin:10px 5px !important;
+    }
+    #content{
+        margin:0px 10px;
+        padding:20px;
+        background-color:white;
+        border-radius: 15px;
+    }
+    #otherinfo{
+        margin:10px 10px;
+    }
+}
+div{
+    background-position: center;
+}
+
+
+
+#topbanner{
+    position:fixed;background:white;width:100%;
+}
+.Header_root{
+    background-color: rgba(0,0,0,.87);
+    height: 60px;
+}
+.author_icon{
+    display: inline-block !important;
+    width:40px !important;
+    height: 40px !important;
+}
+.author_intro{
+    float: right;
+}
+.author_name{
+    margin-left: 5px;
+    font-size: 1.3em;
+}
+
+
+.Header_title{
+    color:white;
+}
+#openappbtn{
+    height:35px;
+    width:110px;
+    font-size:15px;
+    border: 2px solid white;
+    border-radius: 19px;
+    position: absolute;
+    right:10px;
+    top:15px;
+    text-align: center;
+}
+#openapp{
+    width:80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+#dq{
+    font-size: 17px;
+    position: absolute;
+    left:50px;
+    top:35%;
+}
+#dt{
+    position: absolute;
+    left:100px;
+    top:40%;
+}
+#funpinsheader{
+    width:200px;
+    height: 60px;
+    
+}
+#dqlogo{
+    width:52px;
+    height:52px;
+}
+.pin_intro{
+    white-space: pre-line;
+}
+#outer-container2{
+    background-color:rgb(255, 210, 0);
+    width: 100%;
+    overflow:hidden
+}
+
+.carousel .slide img {
+    height: 350px; 
+    max-width: 430px;
+    border-radius: 20px;
+}
+.otherintro_icon{
+    width:35px;
+    height:35px;
+}
+#otherinfo_table{
+    table-layout: fixed;
+     width: 100%;
+}
+.info_td{
+    word-wrap: break-word
+}
+.info_name{
+    width:15%;
+}
+.control-dots{
+    padding: 0px !important;
+}
