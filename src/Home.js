@@ -70,7 +70,7 @@ class Home extends React.Component {
                                 <a className="ios_btn" href="https://apps.apple.com/us/app/%E7%82%B9%E5%9C%88/id1483535140">
                                 <img style={{width:"150px" ,height:"48"}} src={ios_bnt} alt="Logo" />
                                 </a>
-                                <a className="and_btn" href="https://apps.apple.com/us/app/%E7%82%B9%E5%9C%88/id1483535140">
+                                <a className="and_btn" href="https://play.google.com/store/apps/details?id=com.dianquan.dianquan_android">
                                 <img style={{width:"150px",height:"48px"}} src={android_bnt} alt="Logo" />
                                 </a>
                              </div>

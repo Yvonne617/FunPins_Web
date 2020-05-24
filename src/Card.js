@@ -5,10 +5,16 @@ import './style/App.css';
 import ImageGallery from 'react-image-gallery';
 const images = [
     {
-      original: '/phone1.png' 
+      original: '/phone6.png' 
     },
     {
-      original: '/phone2.png'
+      original: '/phone5.png'
+    },
+    {
+      original: '/phone4.png'
+    },
+    {
+      original: '/phone3.png'
     }
   ];
    
