@@ -56,7 +56,6 @@ class Pin extends Component {
             checkPlaceAttributes({placeId:this.state.place_id.toString(),curTime:cur_time}).then(result => {
                   // Read result of the Cloud Function.
                 var res = result.data;
-                console.log(res)
                 if(res){
                     var place_info = JSON.parse(res.data);
                     var business_status = place_info.business_status;
@@ -116,7 +115,7 @@ class Pin extends Component {
         return (
             <div id="outer-container2">
                 <Helmet>
-                    <title>标记详情</title>
+                    <title>{this.state.data.title}</title>
                 </Helmet>
                 <StickyHeader
                     // This is the sticky part of the header.
