@@ -11,6 +11,7 @@ import { Table } from 'semantic-ui-react'
 import StickyHeader from 'react-sticky-header';
 import 'firebase/firestore'
 import 'firebase/functions';
+import { ConsoleWriter } from 'istanbul-lib-report';
 class Pin extends Component {
     constructor (props){
         super(props);
@@ -55,9 +56,11 @@ class Pin extends Component {
             checkPlaceAttributes({placeId:this.state.place_id.toString(),curTime:cur_time}).then(result => {
                   // Read result of the Cloud Function.
                 var res = result.data;
+                console.log(res)
                 if(res){
                     var place_info = JSON.parse(res.data);
                     var business_status = place_info.business_status;
+                    console.log(business_status)
                     this.setState({business_number:place_info.formatted_phone_number});
                     this.setState({price:place_info.price_level});
                     this.setState({placeName:place_info.name})
@@ -67,7 +70,11 @@ class Pin extends Component {
                     if(place_info.opening_hours && place_info.opening_hours.weekday_text){
                         var open_right_now = res.open_now;
                         if(open_right_now){
-                            this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+"，营业中"})
+                            if(cday == 0){
+                                this.setState({business_status:place_info.opening_hours.weekday_text[6]+"，营业中"})
+                            }else{
+                                this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+"，营业中"})
+                            }
                         }else{
                             this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+", 已关门"})
                         }
