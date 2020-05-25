@@ -75,7 +75,11 @@ class Pin extends Component {
                                 this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+"，营业中"})
                             }
                         }else{
-                            this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+", 已关门"})
+                            if(cday == 0){
+                                this.setState({business_status:place_info.opening_hours.weekday_text[6]+"，已关门"})
+                            }else{
+                                this.setState({business_status:place_info.opening_hours.weekday_text[cday-1]+"，已关门"})
+                            }
                         }
                        
                     }else{
