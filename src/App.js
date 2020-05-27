@@ -6,6 +6,7 @@ import Refer from './Refer';
 import Contact from './Contact';
 import ShowArticle from './ShowArticle';
 import Pin from './Pin';
+import Thankyou from './Thankyou';
 import "semantic-ui-css/semantic.min.css";
 import hotpot_logo from './img/hotpot_icon.png'; // Tell webpack this JS file uses this image
 import './style/App.css';
@@ -19,6 +20,7 @@ function App() {
       <Route path="/Contact" component={Contact} />
       <Route path="/Pins/:id" component={Pin} />
       <Route path="/News/:id" component={Pin} />
+      <Route path="/Thanks" component={Thankyou} />
     </div>
   </Router>
   );

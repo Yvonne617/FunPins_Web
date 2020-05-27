@@ -17,6 +17,10 @@
       "email":"Email",
       "message":"Message",
       "submit":"Submit"
+    },
+    "thanks":{
+      "title":"Thank you!",
+      "other":"We will get back to you soon."
     }
    
 }

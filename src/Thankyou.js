@@ -5,7 +5,7 @@ import Menu from './topmenu';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image } from 'semantic-ui-react';
 import Contactform from './Contactform';
-import email_logo from './img/email.png';
+import thanks_logo from './img/thankyou.png';
 import firebase from './firebase';
 import {
     setTranslations,
@@ -18,33 +18,14 @@ import {
 import PropTypes from 'prop-types';
 import './style/Contact.css';
 setDefaultLanguage(getLanguage());
-const items = [
-    {
-      childKey: 0,
-      image: '/images/wireframe/image.png',
-      header: 'Header',
-      description: 'Description',
-      meta: 'Metadata',
-      extra: 'Extra',
-    },
-    {
-      childKey: 1,
-      image: '/images/wireframe/image.png',
-      header: 'Header',
-      description: 'Description',
-      meta: 'Metadata',
-      extra: 'Extra',
-    },
-  ]
-
-
-class Contact extends Component {
+class Thankyou extends Component {
     state = { width: 0, height: 0 };
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       };
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
+
       }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
@@ -59,19 +40,18 @@ class Contact extends Component {
                 </Helmet>
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
-                <div className="contact_title">{t('contact.title')}</div>
-                <div className="contact_subtitle">213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017</div>
+                <div className="thankstitle">{t('thanks.title')}</div>
                 <Grid centered>
                 <Grid.Row id="row2" >
                     <Grid.Column mobile={16} tablet={7} computer={5} >
-                        <div className="contact_form_icon">
-                            <img src={email_logo}/>
+                        <div className="thankyou_icon">
+                            <img src={thanks_logo}/>
                         </div>
                     
                     </Grid.Column>
                     <Grid.Column mobile={16} tablet={8} computer={6} >
-                        <div className="contact_form">
-                            <Contactform />
+                        <div className="thanksinfo">
+                            {t('thanks.other')}
                         </div>
                     </Grid.Column>
                     </Grid.Row>
@@ -81,7 +61,7 @@ class Contact extends Component {
         )
     }
 }
-Contact.propTypes = {
+Thankyou.propTypes = {
     t: PropTypes.func.isRequired,
   };
-  export default translate(Contact);
+  export default translate(Thankyou);
