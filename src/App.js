@@ -4,6 +4,7 @@ import Home from './Home';
 import News from './News';
 import Refer from './Refer';
 import Maps from './Maps';
+import Map from './Map';
 import Contact from './Contact';
 import ShowArticle from './ShowArticle';
 import Pin from './Pin';
@@ -23,6 +24,7 @@ function App() {
       <Route path="/News/:id" component={ShowArticle} />
       <Route path="/Thanks" component={Thankyou} />
       <Route path="/Maps" component={Maps} />
+      <Route path="/Map" component={Map} />
     </div>
   </Router>
   );

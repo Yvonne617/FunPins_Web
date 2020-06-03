@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  #map_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  .e-marker {
+    transform-origin: bottom center;
+    cursor: pointer;
+  }
+  .e-marker__marker {
+    fill: white;
+  }
+  .e-marker__icon {
+    fill: white;
+  }
+  .e-marker__image {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+  }
+  .e-marker__circle {
+    display: none;
+  }
+  .e-marker__text {
+    font-size: 12px;
+    font-family: brandon-grotesque, sans-serif;
+    text-align: center;
+    opacity: 0;
+    color: #fff;
+    fill: #fff;
+    transform-origin: 50% 50%;
+    alignment-baseline: middle;
+    text-anchor: middle;
+  }
+  
