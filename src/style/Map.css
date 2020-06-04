@@ -22,10 +22,10 @@ body {
     cursor: pointer;
   }
   .e-marker__marker {
-    fill: white;
+    fill: rgb(255, 210, 0);
   }
   .e-marker__icon {
-    fill: white;
+    fill:rgb(255, 210, 0);
   }
   .e-marker__image {
     transform: scale(0);
@@ -39,8 +39,8 @@ body {
     font-family: brandon-grotesque, sans-serif;
     text-align: center;
     opacity: 0;
-    color: #fff;
-    fill: #fff;
+    color: rgb(255, 210, 0);
+    fill: rgb(255, 210, 0);
     transform-origin: 50% 50%;
     alignment-baseline: middle;
     text-anchor: middle;
