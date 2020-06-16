@@ -41,7 +41,7 @@ class MenuExampleSecondary extends Component {
             <span>{t('nav.nav_news')}</span>
           </Link>
         
-          <Link to="/Maps/" className="menu_btn">
+          <Link to="/Map/" className="menu_btn">
             <img style={{width:"50px",height:"50px"}} src={funpin_logo} alt="Logo" />
             <span>{t('nav.nav_maps')}</span>
           </Link>

@@ -1,4 +1,11 @@
+import pin from './Pin';
+import Popup from './popup';
+
 //load map
+
+
+
+
 
 
 /*
@@ -321,7 +328,7 @@ function initMap(map) {
             });
             new mapboxgl.Popup({ closeOnClick: false })
             .setLngLat(marker.geometry.coordinates)
-            .setHTML('<h1>Hello World!</h1>')
+            .setHTML('<div> <Popup \> </div?')
             .addTo(map);
         });
 
@@ -431,7 +438,7 @@ function initMap(map) {
 // If you fork or copy this mapbox, pretty pleae create your own *FREE* API key on maptiler.com
 export const initMapbox = async () => {
 
-  const response = await fetch('https://api.maptiler.com/maps/4bc1b504-912e-4e83-9536-8641fc6c9be9/style.json?key=8QLR0wSF54AXm7TDdzXm');
+  const response = await fetch('https://api.maptiler.com/maps/hybrid/style.json?key=8TW2LSOj1pWtzH9T1Z58');
   try {
     if(!response.ok) throw Error(response.statusText);
 
