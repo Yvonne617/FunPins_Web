@@ -1,6 +1,7 @@
-import pin from './Pin';
-import Popup from './popup';
-
+import firebase from './firebase';
+import 'firebase/firestore';
+import 'firebase/functions';
+import './style/maprender.css';
 //load map
 
 
@@ -229,14 +230,42 @@ const geojson = {
     ]
 };
 
+// create brief of the sight
+function createBrife(pin){
+    const imageURL = pin.images[0].uri;
+    const title = pin.title;
+    const subtitle = pin.subTitle;
+    const place = pin.placeName;
+    const pinID = "#/Pins/" + pin.pinID;
+
+    return `
+        <div>
+        <image src = "${imageURL}" width = "200" height = "300" >
+        <h1><strong style="text-align:center"> ${title} </strong></h1>
+        <h4 style="text-align:left"> ${place} </h4>
+        <p style="text-align:left"> ${subtitle} </p> 
+        <a href = "${pinID}"> go to visit the detail </a>
+        </div>
+    `;
+        
+    
+}
+
+
+
 // 🌎 CREATE GLORIOUS MARKERS
 function renderMarker(marker) {
-    const { title, imageUrl, type } = marker.properties;
+    const title = marker.title;
+    // const { title, imageUrl, type } = marker.properties;
+    const imageUrl = marker.icon;
     const titleArr = title.split(' ');
     const titleLast = titleArr.slice(Math.ceil(titleArr.length / 2), titleArr.length);
     const titleFirst = titleArr.slice(0, Math.ceil(titleArr.length / 2));
     let currentIcon = '';
-    
+    const description = createBrife(marker);
+    const type = marker.tag;
+    marker.des = description;
+    marker.coord = marker.coord.reverse();
     switch(type) {
         case 'beach':
             currentIcon = iconBeach;
@@ -310,11 +339,24 @@ function offSetMarker(marker, markerGrowSize, map) {
 }
 
 // 🌎 MAP
-function initMap(map) {
-    const bounds = new mapboxgl.LngLatBounds();
 
+// function GetPins() {
+//     var GetPins = firebase.functions().httpsCallable('getOfficialRecommendations');
+//     return GetPins({longitude:0 , latitude:0}).then(function(result){
+//         var res = result.data.recommendationPins;
+//         console.log(res);
+//         return res
+//     });
+    
+// }
+
+
+
+function initMap(map, pins) {
+    console.log(pins);
+    const bounds = new mapboxgl.LngLatBounds();
     // ADD MARKERS TO MAP
-    geojson.features.forEach((marker) => {
+    pins.forEach((marker) => {
         const svgMarker = renderMarker(marker);
         // To get an actual DOM node instead of a string we append our marker to a dummy element and query it again with 'firstchild'. This way we retrieve a normal DOM node
         const placeholder = document.createElement('div');
@@ -323,22 +365,22 @@ function initMap(map) {
 
         el.nextSibling.addEventListener('click', () => {
             map.flyTo({
-                center: marker.geometry.coordinates,
+                center: marker.coord,
                 zoom: 11,
             });
             new mapboxgl.Popup({ closeOnClick: false })
-            .setLngLat(marker.geometry.coordinates)
-            .setHTML('<div> <Popup \> </div?')
+            .setLngLat(marker.coord)
+            .setHTML(marker.des)
             .addTo(map);
         });
 
         // Extend bounds with marker coordinates
-        bounds.extend(marker.geometry.coordinates);
+        bounds.extend(marker.coord);
 
         markers.push(el.nextSibling);
 
         new mapboxgl.Marker(el.nextSibling, {offset: [0, -30]})
-            .setLngLat(marker.geometry.coordinates)
+            .setLngLat(marker.coord)
             .addTo(map);
         // new mapboxgl.Popup({ closeOnClick: false })
         //     .setLngLat([-96, 37.8])
@@ -449,7 +491,10 @@ export const initMapbox = async () => {
         zoom: 2,
         center: [-90.875666, 14.500461],
     });
-    initMap(map);
+    var GetPins = firebase.functions().httpsCallable('getOfficialRecommendations');
+    GetPins({longitude:0 , latitude:0}).then(function(result){
+    initMap(map, result.data.recommendationPins);
+    });
   } catch(error) {
     console.error({error})
   }

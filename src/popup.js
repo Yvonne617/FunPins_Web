@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import { Grid, Image, List, Divider } from 'semantic-ui-react';
+import firebase from './firebase';
+import 'firebase/firestore'
+import 'firebase/functions';
+
 export default class Popup extends Component{
     render() {
         return (
