@@ -3,11 +3,12 @@
   .mapboxgl-popup-content {
     font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
     padding: 0;
-    max-width: 800px;
+    max-width: 1000px;
     max-height: 500px;
   }
   
   .mapboxgl-popup-content img {
+      border: 3px solid yellow;
       margin: 5px;
       padding: 10px;
       float: left;
@@ -29,6 +30,7 @@
   }
   
   .mapboxgl-popup-content h4 {
+    font: italic small-caps bold;
     margin: 0;
     display: block;
     padding: 10px;

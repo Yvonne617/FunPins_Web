@@ -236,7 +236,8 @@ function createBrife(pin){
     const title = pin.title;
     const subtitle = pin.subTitle;
     const place = pin.placeName;
-    const pinID = "#/Pins/" + pin.pinID;
+    console.log(typeof pin.pinId);
+    const pinID = "#/Pins/" + pin.pinId;
 
     return `
         <div>
@@ -246,9 +247,7 @@ function createBrife(pin){
         <p style="text-align:left"> ${subtitle} </p> 
         <a href = "${pinID}"> go to visit the detail </a>
         </div>
-    `;
-        
-    
+    `;   
 }
 
 
@@ -480,7 +479,7 @@ function initMap(map, pins) {
 // If you fork or copy this mapbox, pretty pleae create your own *FREE* API key on maptiler.com
 export const initMapbox = async () => {
 
-  const response = await fetch('https://api.maptiler.com/maps/hybrid/style.json?key=8TW2LSOj1pWtzH9T1Z58');
+  const response = await fetch('https://api.maptiler.com/maps/basic/style.json?key=8TW2LSOj1pWtzH9T1Z58');
   try {
     if(!response.ok) throw Error(response.statusText);
 
