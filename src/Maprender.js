@@ -232,22 +232,38 @@ const geojson = {
 
 // create brief of the sight
 function createBrife(pin){
-    const imageURL = pin.images[0].uri;
+    const imageURL_0 = pin.images[0].uri;
+    // const imageURL_1 = pin.images[1].uri;
+    // const imageURL_2 = pin.images[2].uri;
+    const icon = pin.icon;
     const title = pin.title;
     const subtitle = pin.subTitle;
     const place = pin.placeName;
-    console.log(typeof pin.pinId);
     const pinID = "#/Pins/" + pin.pinId;
-
-    return `
-        <div>
-        <image src = "${imageURL}" width = "200" height = "300" >
-        <h1><strong style="text-align:center"> ${title} </strong></h1>
-        <h4 style="text-align:left"> ${place} </h4>
-        <p style="text-align:left"> ${subtitle} </p> 
-        <a href = "${pinID}"> go to visit the detail </a>
-        </div>
-    `;   
+    const db = firebase.firestore();
+    var user = {};
+    return db.collection("users").doc(pin.owner.toString()).get().then(doc =>{
+        if (!doc.exists){
+            console.log("No user");
+        } else {
+            const user= doc.data();
+            console.log(user.avatar);
+            var res = `
+            <div id = "container">
+            <image src = "${imageURL_0}" class="slider-image" />
+            <div class="bottom">
+                <img src = "${user.avatar?user.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"}" classname = "icon" />
+                <a href="${pinID}"> <p> ${title} </p> </a>
+            </div>
+            </div>
+        `;   
+            return res;
+        }
+    })
+    .catch(err =>{
+        console.log('Error getting user', err);
+    })
+    
 }
 
 
@@ -261,9 +277,10 @@ function renderMarker(marker) {
     const titleLast = titleArr.slice(Math.ceil(titleArr.length / 2), titleArr.length);
     const titleFirst = titleArr.slice(0, Math.ceil(titleArr.length / 2));
     let currentIcon = '';
-    const description = createBrife(marker);
+    createBrife(marker).then(function(res){
+        marker.des = res;
+    });
     const type = marker.tag;
-    marker.des = description;
     marker.coord = marker.coord.reverse();
     switch(type) {
         case 'beach':
