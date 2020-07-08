@@ -295,7 +295,7 @@ function renderMarker(marker) {
       c3.9-3.9,7.6-7.6,10.4-12.1c3.1-5.1,4.6-10.3,4.6-16.7C71,60.8,67.4,52,60.7,45.4z M36,97.4c-15,0-27.3-12.2-27.3-27.3
       S21,42.9,36,42.9c15,0,27.3,12.2,27.3,27.3C63.3,85.2,51,97.4,36,97.4z"/>
           <path class="e-marker__circle" d="M36,97.4c15,0,27.3-12.2,27.3-27.3c0-15-12.2-27.3-27.3-27.3S8.7,55.1,8.7,70.2S21,97.4,36,97.4z"/>
-                <image class="e-marker__icon" width="100%" height="100%" clip-path="url(#circle)" xlink:href="/dianquanLogo.png" />
+                <image class="e-marker__icon" width="100%" height="100%" clip-path="url(#circle)" xlink:href="${imageUrl}" />
                 <image class="e-marker__image" width="100%" height="100%" clip-path="url(#circle)" xlink:href="${imageUrl}" />
                 <text class="e-marker__text" transform="matrix(1 0 0 1 0 13.9998)">
                     <tspan x="50%" y="0" >${titleFirst.join(' ')}</tspan>
