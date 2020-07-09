@@ -81,6 +81,15 @@
         display: block;
         object-fit: contain;
     }
+    #content {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+    }
+    #page-wrap2 {
+        background-color: rgb(255, 210, 0);
+    }
 }
 
 div{
