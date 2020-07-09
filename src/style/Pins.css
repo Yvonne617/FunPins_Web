@@ -5,8 +5,8 @@
     position: relative;
     /* width:400px !important; */
     /* height:550px; */
-    margin:30px 0px 20px 0px;
-    background-color:rgb(255, 210, 0);
+    margin:50px 0px 20px 0px;
+    background-color:white;
   }
 .carousel .slide{
     background: none !important; 
@@ -14,25 +14,39 @@
 .image-slider{
     margin-top:150px !important;
 }
-#content,#otherinfo{
-    margin:30px 10px;
+#content{
+    margin:50px 10px 0px 10px;
     padding:20px;
     background-color:white;
     border-radius: 15px;
+}
+#otherinfo{
+    margin:10px 10px;
+    padding:20px;
+    background-color:white;
+    border-radius: 15px;
+    border: 1px solid rgb(177, 175, 175);
 }
 @media (max-width: 765px) {
     .author,.pin_intro{
         margin:10px 5px !important;
     }
     #content{
-        margin:0px 10px;
+        margin:0px 20px;
         padding:20px;
         background-color:white;
         border-radius: 15px;
     }
     #otherinfo{
-        margin:10px 10px;
+        margin:10px 30px;
     }
+    .parent3{
+        position: relative;
+        /* width:400px !important; */
+        /* height:550px; */
+        margin:0px 0px 20px 0px;
+        background-color:white;
+      }
 }
 div{
     background-position: center;
@@ -44,7 +58,7 @@ div{
     position:fixed;background:white;width:100%;
 }
 .Header_root{
-    background-color: rgba(0,0,0,.87);
+    background-color:rgb(255, 210, 0);
     height: 60px;
 }
 .author_icon{
@@ -98,7 +112,7 @@ div{
     white-space: pre-line;
 }
 #outer-container2{
-    background-color:rgb(255, 210, 0);
+    background-color:white;
     width: 100%;
     overflow:hidden
 }

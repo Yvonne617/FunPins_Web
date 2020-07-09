@@ -9,6 +9,7 @@ import Menu from './topmenu';
 import 'react-sticky-header/styles.css';
 import { Table } from 'semantic-ui-react'
 import StickyHeader from 'react-sticky-header';
+import StickyFooter from './StickyFooter';
 import 'firebase/firestore'
 import 'firebase/functions';
 import { ConsoleWriter } from 'istanbul-lib-report';
@@ -16,7 +17,7 @@ class Pin extends Component {
     constructor (props){
         super(props);
         this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,placeName:null,business_number:null,business_status:null};
-      }    
+    }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       };
@@ -165,7 +166,7 @@ class Pin extends Component {
                         <hr></hr>
                         <div className="pin_intro">
                             <p className="pin_title">{this.state.data.title}</p>                  
-                            <p>{this.state.data.subTitle}</p>
+                            {<p>{this.state.data.subTitle? this.state.data.subTitle.trimEnd():this.state.data.subTitle}</p>} 
                         </div>
                     </div>
                     <div id="otherinfo">
@@ -220,7 +221,8 @@ class Pin extends Component {
             </Grid.Row>
             </Grid>
             </main>
-            </div>
+            <StickyFooter />
+        </div>
         )
     }
 }
