@@ -167,6 +167,8 @@ class Pin extends Component {
                         <div className="pin_intro">
                             <p className="pin_title">{this.state.data.title}</p>                  
                             {<p>{this.state.data.subTitle? this.state.data.subTitle.trimEnd():this.state.data.subTitle}</p>} 
+                            <p className="dateBefore"> {Math.floor((new Date().getTime()-new Date(this.state.data.timeStamp*1000)) / (24 * 3600 * 1000))}天前</p>
+
                         </div>
                     </div>
                     <div id="otherinfo">
@@ -209,18 +211,41 @@ class Pin extends Component {
             }
                     </table>
             </div>
-                    
-            <div className="blurmap-container" onClick={this.createDynamicLink}>
+            <div className="comments">
+                <p>评论</p>
+                <table id="otherinfo_table">
+                    <tr>
+                        <td className="info_name"><img src="/online-shop.png" className="comment_user_icon"/></td>
+                        <td>
+                            <p>
+                                粉丝1号
+                            </p>
+                            zhenhaochi!!!111
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="info_name"><img src="/online-shop.png" className="comment_user_icon"/></td>
+                        <td>
+                            <p>
+                                粉丝2号
+                            </p>
+                            zhenhaochi!!!222
+                        </td>
+                    </tr>
+                </table>
+            </div>       
+            {/* <div className="blurmap-container" onClick={this.createDynamicLink}>
                     <div className="blurmap"></div>
                     <div className="blurmap-text" >
                         下载点圈app，查看我的宝藏推荐地图
                     </div>
-                </div>  
-                </Grid.Column>
+            </div>   */}
+            </Grid.Column>
       
             </Grid.Row>
             </Grid>
             </main>
+
             <StickyFooter />
         </div>
         )
