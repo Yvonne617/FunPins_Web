@@ -73,7 +73,7 @@
 }
 
 
-@media (min-width: 980px){
+/* @media (min-width: 980px){
     #openappbtn{
         display: none;
     }
@@ -103,7 +103,7 @@
     #page-wrap2 {
         background-color: rgb(255, 210, 0);
     }
-}
+} */
 
 div{
     background-position: center;

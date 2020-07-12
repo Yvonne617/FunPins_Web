@@ -16,7 +16,7 @@ import { ConsoleWriter } from 'istanbul-lib-report';
 class Pin extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,placeName:null,business_number:null,business_status:null};
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,placeName:null,business_number:null,business_status:null,comments:[]};
     }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -100,9 +100,55 @@ class Pin extends Component {
         .catch(err => {
           console.log('Error getting document', err);
         });
+        db.collection("pins").doc(this.props.match.params.id).collection("comments").get().then(querySnapshot=> {
+            querySnapshot.forEach(doc=> {
+                var temp_comment_arr= {comment_content:null,sender_id:null,receiver_id:null,sender_avator:null,sender_name:null,receiver_name:null}
+                const comment_content = doc.data().content
+                const sender_id = doc.data().sender
+                const receiver_id = doc.data().receiver
+                temp_comment_arr.comment_content = comment_content
+                temp_comment_arr.sender_id= sender_id
+                temp_comment_arr.receiver_id = receiver_id
+                //get sender avator and name
+                db.collection("users").doc(sender_id).get().then(doc => {
+                    if (!doc.exists) {
+                      console.log('No such user!');
+                    } else {
+                        const sender_avator = doc.data().avatar
+                        const sender_name = doc.data().name
+                        temp_comment_arr.sender_avator= sender_avator
+                        temp_comment_arr.sender_name = sender_name
+                        if(receiver_id != ""){
+                            db.collection("users").doc(receiver_id).get().then(doc => {
+                                if (!doc.exists) {
+                                  console.log('No such user!');
+                                } else {
+                                    const receiver_name = doc.data().name
+                                    temp_comment_arr.receiver_name = receiver_name
+                                    this.state.comments.push(temp_comment_arr)
+                                    console.log("comments:",this.state.comments)
+                                }
+                              })
+                              .catch(err => {
+                                console.log('Error getting user', err);
+                              });
+                        }else{
+                            this.state.comments.push(temp_comment_arr)
+                            console.log("comments:",this.state.comments)
+                        }
+                    }
+                  })
+                  .catch(err => {
+                    console.log('Error getting user', err);
+                  }); 
+           
+            });
+        })
+        .catch(err => {
+            console.log('Error getting comments', err);
+          })
+
         
-
-
       }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
@@ -174,12 +220,14 @@ class Pin extends Component {
                     <div id="otherinfo">
                     <table id="otherinfo_table">
             {this.state.placeName ?
+                    <tbody>
                         <tr>
                             <td className="info_name"><img src="/online-shop.png" className="otherintro_icon"/></td>
                             <td className="info_td">
                                 {this.state.placeName.toString()}
                             </td>
                         </tr>
+                    </tbody>
                         :""
             }
             { this.state.price ?
@@ -213,33 +261,36 @@ class Pin extends Component {
             </div>
             <div className="comments">
                 <p>评论</p>
-                <table id="otherinfo_table">
-                    <tr>
-                        <td className="info_name"><img src="/online-shop.png" className="comment_user_icon"/></td>
-                        <td>
-                            <p>
-                                粉丝1号
-                            </p>
-                            zhenhaochi!!!111
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="info_name"><img src="/online-shop.png" className="comment_user_icon"/></td>
-                        <td>
-                            <p>
-                                粉丝2号
-                            </p>
-                            zhenhaochi!!!222
-                        </td>
-                    </tr>
-                </table>
-            </div>       
+                {this.state.comments ?
+                    <table id="otherinfo_table">
+                        <tbody>
+                            {this.state.comments.map(function(row, i){
+                                return  (
+                                    <tr>
+                                        <td className="info_name"><img src={row.sender_avator} className="comment_user_icon"/></td>
+                                        <td>
+                                            <p>
+                                                {row.sender_name}
+                                            </p>
+                                            {row.receiver_name? "@"+row.receiver_name+": "+row.comment_content:row.comment_content}
+                                        </td>
+                                    </tr>
+                                )
+                            
+                            })}
+                        </tbody>
+                    </table>   
+               
+                : ""}
+            </div>   
             {/* <div className="blurmap-container" onClick={this.createDynamicLink}>
                     <div className="blurmap"></div>
                     <div className="blurmap-text" >
                         下载点圈app，查看我的宝藏推荐地图
                     </div>
             </div>   */}
+
+
             </Grid.Column>
       
             </Grid.Row>
