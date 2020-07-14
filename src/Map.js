@@ -24,9 +24,11 @@ componentWillUnmount() {
   render() {
     utils.initMapbox();
     return (
-      <div className="content_container"> 
-        <div id="map_container"></div>
+      <div id="outer-container"> 
         <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>
+        <main id="map-wrap">
+        <div id="map_container"></div>
+        </main>
       </div>
     )
   }

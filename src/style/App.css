@@ -51,15 +51,14 @@ body{
 }
 .menu{
   margin-bottom: 150px;
-  right:10px;
   background-color:rgb(61, 56, 56) ;
   display:block;
+  z-index: 1000;
 }
-.ui.secondary.menu{
-  background-color:rgb(61, 56, 56) ;
-}
+
 .ui.secondary.menu{
   background-color:rgb(61, 56, 56) !important;
+  z-index: 1000 !important;
 }
 
 .menu a span{
