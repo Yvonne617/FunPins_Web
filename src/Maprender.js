@@ -315,8 +315,9 @@ function renderMarker(marker) {
                 <image class="e-marker__icon" width="100%" height="100%" clip-path="url(#circle)" xlink:href="${imageUrl}" />
                 <image class="e-marker__image" width="100%" height="100%" clip-path="url(#circle)" xlink:href="${imageUrl}" />
                 <text class="e-marker__text" transform="matrix(1 0 0 1 0 13.9998)">
-                    <tspan x="50%" y="0" >${titleFirst.join(' ')}</tspan>
-                    <tspan x="50%" y="13" >${titleLast.join(' ')}</tspan>      
+ <!--                   <tspan x="50%" y="0">${titleFirst.join(' ')}</tspan>
+                    <tspan x="50%" y="13" >${titleLast.join(' ')}</tspan>     
+--> 
                 </text>
             </svg>
         </div>
