@@ -2,8 +2,8 @@ import React, { Component }  from 'react';
 import "semantic-ui-css/semantic.min.css";
 import './style/Map.css';
 import * as utils from './Maprender';
-import {Helmet} from 'react-helmet';
 import Menu from './topmenu';
+import "semantic-ui-css/semantic.min.css";
 export default class Map extends Component{
   constructor(props) {
     super(props);
