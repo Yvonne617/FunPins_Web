@@ -289,21 +289,13 @@ class Pin extends Component {
                
                 : ""}
             </div>   
-            {/* <div className="blurmap-container" onClick={this.createDynamicLink}>
-                    <div className="blurmap"></div>
-                    <div className="blurmap-text" >
-                        下载点圈app，查看我的宝藏推荐地图
-                    </div>
-            </div>   */}
-
-
             </Grid.Column>
       
             </Grid.Row>
             </Grid>
             </main>
 
-            <StickyFooter numOfLiked = {this.state.numOfLiked}/>
+            <StickyFooter numOfLiked = {this.state.numOfLiked} pinId={this.props.match.params.id}/>
         </div>
         )
     }
