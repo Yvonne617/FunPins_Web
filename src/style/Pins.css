@@ -265,3 +265,45 @@ div{
     height: 40px;
     width:40px;
 }
+
+#comment{
+    text-align: center;
+    background-color: rgb(233, 227, 227);
+    border: 0px;
+    width:100px;
+    height: 30px;
+    margin:15px 15px;
+    display: inline-block;
+}
+#likeSpan{
+    display: inline-block;
+    margin:auto 20px;
+    font-family: Pudding;
+
+}
+#footerBtn{
+    height: 20px;
+    width:20px;
+    margin-right: 5px;
+    transform: translate(0px, 3px);
+}
+.placeName{
+    margin:5px;
+    font-size: 0.9em;
+}
+#mapIcon{
+    height:25px;
+    width: 25px;
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: translate(0px, 5px);
+}
+.placeStr{
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    height:25px;
+    margin-left: 5px;
+
+}

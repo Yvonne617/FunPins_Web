@@ -16,7 +16,7 @@ import { ConsoleWriter } from 'istanbul-lib-report';
 class Pin extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,placeName:null,business_number:null,business_status:null,comments:[]};
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,address:null,placeName:null,business_number:null,business_status:null,comments:[],numOfLiked:0};
     }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -42,6 +42,8 @@ class Pin extends Component {
             this.setState({video:this.state.data.video})
             this.setState({images:this.state.data.images.map((item) => item.uri)})
             this.setState({place_id:this.state.data.place_id})
+            this.setState({address:this.state.data.address})
+            this.setState({numOfLiked:this.state.data.numOfLiked})
             db.collection("users").doc(this.state.user.toString()).get().then(doc => {
                 if (!doc.exists) {
                   console.log('No such user!');
@@ -60,7 +62,7 @@ class Pin extends Component {
                 if(res){
                     var place_info = JSON.parse(res.data);
                     var business_status = place_info.business_status;
-                    console.log(business_status)
+                    console.log("placeinfo:",place_info)
                     this.setState({business_number:place_info.formatted_phone_number});
                     this.setState({price:place_info.price_level});
                     this.setState({placeName:place_info.name})
@@ -210,6 +212,10 @@ class Pin extends Component {
                         </span>
                         </div>
                         <hr></hr>
+                        <div className="placeName">
+                            <img id="mapIcon" src="/maps-and-location.png"></img>
+                            <div className="placeStr">{this.state.placeName?this.state.placeName:""}</div>
+                        </div>
                         <div className="pin_intro">
                             <p className="pin_title">{this.state.data.title}</p>                  
                             {<p>{this.state.data.subTitle? this.state.data.subTitle.trimEnd():this.state.data.subTitle}</p>} 
@@ -219,12 +225,12 @@ class Pin extends Component {
                     </div>
                     <div id="otherinfo">
                     <table id="otherinfo_table">
-            {this.state.placeName ?
+            {this.state.address ?
                     <tbody>
                         <tr>
                             <td className="info_name"><img src="/online-shop.png" className="otherintro_icon"/></td>
                             <td className="info_td">
-                                {this.state.placeName.toString()}
+                                {this.state.address.toString()}
                             </td>
                         </tr>
                     </tbody>
@@ -297,7 +303,7 @@ class Pin extends Component {
             </Grid>
             </main>
 
-            <StickyFooter />
+            <StickyFooter numOfLiked = {this.state.numOfLiked}/>
         </div>
         )
     }
