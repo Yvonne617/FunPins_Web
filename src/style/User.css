@@ -1,0 +1,73 @@
+#page-wrap3{
+    margin:60px auto 60px auto;
+}
+.user_icon{
+    display: inline-block !important;
+    width:80px !important;
+    height: 80px !important;
+}
+.gender_sect{
+    margin-left:5px;
+    display: inline-block;
+}
+.gender_icon{
+    height: 20px;
+    width: 20px;
+    display: inline !important;   
+}
+
+.ui.grid{
+    margin-bottom: -2em;
+}
+.sub_info{
+    font-weight: bold;
+    display: inline-block;
+    margin-top:25px;
+    margin-right:20px;
+    height:50px;
+}
+.sub_info_num{
+    font-weight: bold;
+    text-align: center;
+}
+.badge{
+    font-size: 0.9em;
+    margin-left: 1px;
+}
+.self_intro{
+    margin-left: 20px;
+    font-size: 0.9em;
+    transform: translate(10px, -20px);
+}
+.section{
+    margin-top:20px; 
+    margin-left: 20px;
+}
+hr{
+    width:83%;
+    margin-top:20px;
+}
+@media (min-width: 800px) {
+    .ui.grid>.row,.self_intro{
+        margin:auto 130px;
+    }
+    .user_icon{
+        width:150px !important;
+        height: 150px !important;
+    }
+    .sub_info{
+        font-weight: bold;
+        display: inline-block;
+        margin-right:40px;
+        height:50px;
+        font-size: 1.5em;
+    }
+    .sub_info_num{
+        font-weight: bold;
+        text-align: center;
+        margin-top:10px;
+    }
+    .self_intro{
+        transform: translate(0px, -12px);
+    }
+  }

@@ -11,6 +11,7 @@ import Pin from './Pin';
 import Thankyou from './Thankyou';
 import mapbox_map from './mapbox';
 import UserMap from './UserMap';
+import User from './User';
 import "semantic-ui-css/semantic.min.css";
 import hotpot_logo from './img/hotpot_icon.png'; // Tell webpack this JS file uses this image
 import './style/App.css';
@@ -29,6 +30,7 @@ function App() {
       <Route path="/Maps" component={Maps} />
       <Route path="/Map" component={Map} />
       <Route path="/mapbox" component={mapbox_map} />
+      <Route path="/User/:id" component={User} />
     </div>
   </Router>
   );
