@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Helmet} from 'react-helmet';
+import { Link } from 'react-router-dom';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image } from 'semantic-ui-react';
 import firebase from './firebase';
@@ -204,11 +205,16 @@ class Pin extends Component {
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div id="content">
                         <div className="author">
-                        <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
+                    {   this.state.userinfo.id?
+                        <Link to={"/User/"+this.state.userinfo.id}>
+                            <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
+                        </Link>
+                        : ""
+                    }
                         <span className="author_name">{this.state.userinfo.name}</span>
                         <span className="author_intro">
-                            <img className="author_icon" src={this.state.userinfo.badge+'.png'} />
-                            <span id="badge">{this.state.userinfo.badge}</span>
+                        <img className="author_icon" src={this.state.userinfo.badge+'.png'} />
+                        <span id="badge">{this.state.userinfo.badge}</span>
                         </span>
                         </div>
                         <hr></hr>

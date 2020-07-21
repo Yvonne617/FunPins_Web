@@ -6,9 +6,9 @@
     width:80px !important;
     height: 80px !important;
 }
-.author{
+/* .author{
     width: 400px;
-}
+} */
 .badge_sect{
     margin-left:5px;
     display: block;
@@ -50,7 +50,7 @@
 .self_intro{
     margin-left: 20px;
     font-size: 0.9em;
-    transform: translate(10px, -30px);
+    transform: translate(10px, -20px);
 }
 .section{
     margin:20px; 

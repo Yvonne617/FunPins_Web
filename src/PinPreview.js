@@ -22,7 +22,7 @@ componentWillMount() {
             console.log('No such document!');
           } else {
             var temp = doc.data()
-            var joined = this.state.pininfo.concat([[temp.images[0].uri,temp.title]]);
+            var joined = this.state.pininfo.concat([[temp.images[0].uri,temp.title,temp.ID]]);
             this.setState({ pininfo: joined })
   
           }
@@ -36,16 +36,22 @@ componentWillMount() {
   componentDidUpdate(){
     $('.Pin_Preview_Img').height($('.Pin_Preview_Img').width()*1.2);
   }
+  createDynamicLink = (pinid) =>{
+    const generateDynamicLink = firebase.functions().httpsCallable('generateDynamicLinkV2');
+    generateDynamicLink({pinId:pinid.toString()}).then(result => {
+        window.location = result.data.shortLink;
+    })
+}
   render() {
     return (
       <Card.Group>
         {this.state.pininfo?
-            this.state.pininfo.map(function(pin, i){
+            this.state.pininfo.map((pin, i) => {
                 return  (
                   <Card>
                     <Card.Content>
                       <Image className="Pin_Preview_Img"
-                        src={pin[0]}
+                        src={pin[0]} onClick={() => this.createDynamicLink(pin[2])}
                       />
                       <Card.Meta></Card.Meta>
                       <Card.Description>

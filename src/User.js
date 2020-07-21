@@ -126,7 +126,7 @@ class User extends Component {
                 <Grid.Row>
                     <Grid.Column mobile={16} tablet={16} computer={16}>
                         <div className="section">
-                        <UserPinTabs pinIds= {this.state.userinfo.pins} />
+                        <UserPinTabs pinIds= {this.state.userinfo.pins} wantToGoIds={this.state.userinfo.wishPins}/>
                         </div>
                     
                     </Grid.Column>

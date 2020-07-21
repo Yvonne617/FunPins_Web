@@ -1,5 +1,6 @@
 import { Tab } from 'semantic-ui-react'
 import PinPreview from './PinPreview'
+import firebase from './firebase';
 import React, { Component } from 'react';
 class TabExampleSecondary extends Component {
 
@@ -20,7 +21,13 @@ render() {
                 },
                 {
                   menuItem: '我的想去',
-                  render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+                  render: () => 
+                  
+                  <Tab.Pane attached={false}>  
+                       <span></span>
+                        <PinPreview pinIds={this.props.wantToGoIds}/>
+                  </Tab.Pane>
+                  
                 }
               ]
               }  />
