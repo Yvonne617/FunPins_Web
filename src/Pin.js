@@ -109,11 +109,11 @@ class Pin extends Component {
       }
      createDynamicLink = () =>{
         const generateDynamicLink = firebase.functions().httpsCallable('generateDynamicLinkV2');
-        console.log(this.props.match.params.id)
         generateDynamicLink({pinId:this.props.match.params.id.toString()}).then(result => {
             window.location = result.data.shortLink;
-        console.log(result.data.shortLink)
         })
+        const url = "https://dianquan.page.link/?link=https://dianquan.page.link/?pinId%3D" + this.props.match.params.id + "&apn=com.dianquan.dianquan_android&isi=1483535140&ibi=project.dianquan&ofl=https://funpins.co"
+        window.location = url;
     }
     render() {
         return (
