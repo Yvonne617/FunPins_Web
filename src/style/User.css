@@ -12,7 +12,6 @@
 .badge_sect{
     margin-left:5px;
     display: inline-block;
-    width: 65px;
     background-color: rgb(241, 188, 53);
     border-radius: 25px;
     text-align: center;
@@ -23,7 +22,9 @@
 .badge{
     text-align: center;
     vertical-align: middle;
+    padding: 5px 5px;
     line-height: 27px;  
+
 }
 .gender_icon{
     height: 20px;
@@ -51,7 +52,7 @@
 .self_intro{
     margin-left: 20px;
     font-size: 0.9em;
-    transform: translate(10px, -20px);
+    transform: translate(10px, -30px);
 }
 .section{
     margin:20px; 
@@ -64,9 +65,9 @@ hr{
     margin-top:20px;
     border:0.02em solid rgb(209, 206, 206);
 }
-.ui.secondary.menu{
-    background-color: white !important;
-}
+/* .ui.secondary.menu{
+    background-color:white !important;
+} */
 .ui.attached.segment{
     border:0px;
 }
@@ -100,9 +101,7 @@ hr{
     background: rgb(241, 188, 53) !important;
     border-radius: 0.2em !important;
 }
-.ui.secondary.menu{
-    z-index: 10 !important;
-}
+
 .ui.tabular.menu .item{
     display: inline-block !important;
     width: 50%;

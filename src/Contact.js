@@ -60,7 +60,7 @@ class Contact extends Component {
                 <Menu windowwidth={this.state.width?this.state.width:window.innerWidth}/>  
                 <main id="page-wrap">
                 <div className="contact_title">{t('contact.title')}</div>
-                <div className="contact_subtitle">213-2040-710 | 1050 WILSHIRE BLVD, LOS ANGELES, CA, 90017</div>
+                <div className="contact_subtitle">FUNPINS INC | 260A PETALUMA BLVD N, PETALUMA, CA, 94952</div>
                 <Grid centered>
                 <Grid.Row id="row2" >
                     <Grid.Column mobile={16} tablet={7} computer={5} >

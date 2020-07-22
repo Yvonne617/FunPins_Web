@@ -57,6 +57,7 @@ body{
 }
 
 .ui.secondary.menu{
+  position: relative;
   background-color:rgb(61, 56, 56) !important;
   z-index: 1000 !important;
 }
