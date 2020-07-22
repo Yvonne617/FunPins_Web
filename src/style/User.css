@@ -105,7 +105,14 @@ hr{
 .ui.secondary.menu{
     z-index: 10 !important;
 }
-
+.ui.tabular.menu .item{
+    display: inline-block !important;
+    width: 50%;
+    text-align: center;
+}
+.ui.menu{
+    text-align: center !important;
+}
 @media (min-width: 800px) {
     .ui.grid>.row,.self_intro{
         margin:auto 130px;
