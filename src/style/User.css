@@ -102,6 +102,10 @@ hr{
     background: rgb(241, 188, 53) !important;
     border-radius: 0.2em !important;
 }
+.ui.secondary.menu{
+    z-index: 10 !important;
+}
+
 @media (min-width: 800px) {
     .ui.grid>.row,.self_intro{
         margin:auto 130px;
