@@ -99,7 +99,7 @@ class User extends Component {
                     <div className="section">
                         <div className="author">
                             <Image className="user_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} circular />
-                            <div>
+                            <div className="user_sub_info">
                                 <span className="author_name">{this.state.userinfo.name}</span><Image className="gender_icon" src={this.state.userinfo.gender == "female"?"/female.png":"/male.png"}/>
                                 <div className = "badge_sect"><span className="badge">{this.state.userinfo.badge}</span></div>
                             </div>
@@ -112,13 +112,13 @@ class User extends Component {
                     <div className="section2"> 
                         <div className="sub_info">粉丝<div className="sub_info_num">{this.state.userinfo.followers?this.state.userinfo.followers.length:"-"}</div></div>
                         <div className="sub_info">关注<div className="sub_info_num">{this.state.userinfo.followings?this.state.userinfo.followings.length:"-"}</div></div>
-                        <div className="sub_info">赞和想去<div className="sub_info_num">{this.state.userinfo.numOfLiked?this.state.userinfo.numOfLiked+this.state.userinfo.numOfWished:'-'}</div></div>
+                        <div className="sub_info">赞和想去<div className="sub_info_num">{this.state.userinfo.numOfLiked?this.state.userinfo.numOfLiked+this.state.userinfo.numOfWished:0}</div></div>
                         <div className="sub_info">标记<div className="sub_info_num">{this.state.userinfo.pins?this.state.userinfo.pins.length:'-'}</div></div>
                     </div>
                    
                 </Grid.Column>
             </Grid.Row>
-            <div className="self_intro">{this.state.userinfo.selfDescription}</div>     
+            <div className="self_intro">个人简介: {this.state.userinfo.selfDescription}</div>     
             
             </Grid>
             {this.state.userinfo.pins?

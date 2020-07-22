@@ -11,13 +11,14 @@
 } */
 .badge_sect{
     margin-left:5px;
-    display: block;
+    display: inline-block;
     width: 65px;
     background-color: rgb(241, 188, 53);
     border-radius: 25px;
     text-align: center;
     color:white;
     height: 27px;
+    transform: translate(0, -3px);;
 }
 .badge{
     text-align: center;
@@ -65,13 +66,10 @@ hr{
 }
 .ui.secondary.menu{
     background-color: white !important;
-}/* 
-.ui.secondary.menu{
-    font-size: 1.3em;
 }
-.ui.secondary.menu .item{
-    margin:auto;
-} */
+.ui.attached.segment{
+    border:0px;
+}
 .ui.segment{
     box-shadow: none;
     border: 0px;
@@ -112,6 +110,10 @@ hr{
 }
 .ui.menu{
     text-align: center !important;
+}
+.user_sub_info{
+    width:300px;
+    margin-top:10px;
 }
 @media (min-width: 800px) {
     .ui.grid>.row,.self_intro{
