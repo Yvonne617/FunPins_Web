@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Helmet} from 'react-helmet';
+import { Link } from 'react-router-dom';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image } from 'semantic-ui-react';
 import firebase from './firebase';
@@ -9,14 +10,15 @@ import Menu from './topmenu';
 import 'react-sticky-header/styles.css';
 import { Table } from 'semantic-ui-react'
 import StickyHeader from 'react-sticky-header';
+import StickyFooter from './StickyFooter';
 import 'firebase/firestore'
 import 'firebase/functions';
 import { ConsoleWriter } from 'istanbul-lib-report';
 class Pin extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,placeName:null,business_number:null,business_status:null};
-      }    
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,address:null,placeName:null,business_number:null,business_status:null,comments:[],numOfLiked:0};
+    }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       };
@@ -41,6 +43,8 @@ class Pin extends Component {
             this.setState({video:this.state.data.video})
             this.setState({images:this.state.data.images.map((item) => item.uri)})
             this.setState({place_id:this.state.data.place_id})
+            this.setState({address:this.state.data.address})
+            this.setState({numOfLiked:this.state.data.numOfLiked})
             db.collection("users").doc(this.state.user.toString()).get().then(doc => {
                 if (!doc.exists) {
                   console.log('No such user!');
@@ -59,7 +63,7 @@ class Pin extends Component {
                 if(res){
                     var place_info = JSON.parse(res.data);
                     var business_status = place_info.business_status;
-                    console.log(business_status)
+                    console.log("placeinfo:",place_info)
                     this.setState({business_number:place_info.formatted_phone_number});
                     this.setState({price:place_info.price_level});
                     this.setState({placeName:place_info.name})
@@ -99,9 +103,55 @@ class Pin extends Component {
         .catch(err => {
           console.log('Error getting document', err);
         });
+        db.collection("pins").doc(this.props.match.params.id).collection("comments").get().then(querySnapshot=> {
+            querySnapshot.forEach(doc=> {
+                var temp_comment_arr= {comment_content:null,sender_id:null,receiver_id:null,sender_avator:null,sender_name:null,receiver_name:null}
+                const comment_content = doc.data().content
+                const sender_id = doc.data().sender
+                const receiver_id = doc.data().receiver
+                temp_comment_arr.comment_content = comment_content
+                temp_comment_arr.sender_id= sender_id
+                temp_comment_arr.receiver_id = receiver_id
+                //get sender avator and name
+                db.collection("users").doc(sender_id).get().then(doc => {
+                    if (!doc.exists) {
+                      console.log('No such user!');
+                    } else {
+                        const sender_avator = doc.data().avatar
+                        const sender_name = doc.data().name
+                        temp_comment_arr.sender_avator= sender_avator
+                        temp_comment_arr.sender_name = sender_name
+                        if(receiver_id != ""){
+                            db.collection("users").doc(receiver_id).get().then(doc => {
+                                if (!doc.exists) {
+                                  console.log('No such user!');
+                                } else {
+                                    const receiver_name = doc.data().name
+                                    temp_comment_arr.receiver_name = receiver_name
+                                    this.state.comments.push(temp_comment_arr)
+                                    console.log("comments:",this.state.comments)
+                                }
+                              })
+                              .catch(err => {
+                                console.log('Error getting user', err);
+                              });
+                        }else{
+                            this.state.comments.push(temp_comment_arr)
+                            console.log("comments:",this.state.comments)
+                        }
+                    }
+                  })
+                  .catch(err => {
+                    console.log('Error getting user', err);
+                  }); 
+           
+            });
+        })
+        .catch(err => {
+            console.log('Error getting comments', err);
+          })
+
         
-
-
       }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
@@ -155,28 +205,41 @@ class Pin extends Component {
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div id="content">
                         <div className="author">
-                        <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
+                    {   this.state.userinfo.id?
+                        <Link to={"/User/"+this.state.userinfo.id}>
+                            <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
+                        </Link>
+                        : ""
+                    }
                         <span className="author_name">{this.state.userinfo.name}</span>
                         <span className="author_intro">
-                            <img className="author_icon" src={this.state.userinfo.badge+'.png'} />
-                            <span id="badge">{this.state.userinfo.badge}</span>
+                        <img className="author_icon" src={this.state.userinfo.badge+'.png'} />
+                        <span id="badge">{this.state.userinfo.badge}</span>
                         </span>
                         </div>
                         <hr></hr>
+                        <div className="placeName">
+                            <img id="mapIcon" src="/maps-and-location.png"></img>
+                            <div className="placeStr">{this.state.placeName?this.state.placeName:""}</div>
+                        </div>
                         <div className="pin_intro">
                             <p className="pin_title">{this.state.data.title}</p>                  
-                            <p>{this.state.data.subTitle}</p>
+                            {<p>{this.state.data.subTitle? this.state.data.subTitle.trimEnd():this.state.data.subTitle}</p>} 
+                            <p className="dateBefore"> {Math.floor((new Date().getTime()-new Date(this.state.data.timeStamp*1000)) / (24 * 3600 * 1000))}天前</p>
+
                         </div>
                     </div>
                     <div id="otherinfo">
                     <table id="otherinfo_table">
-            {this.state.placeName ?
+            {this.state.address ?
+                    <tbody>
                         <tr>
                             <td className="info_name"><img src="/online-shop.png" className="otherintro_icon"/></td>
                             <td className="info_td">
-                                {this.state.placeName.toString()}
+                                {this.state.address.toString()}
                             </td>
                         </tr>
+                    </tbody>
                         :""
             }
             { this.state.price ?
@@ -208,19 +271,38 @@ class Pin extends Component {
             }
                     </table>
             </div>
-                    
-            <div className="blurmap-container" onClick={this.createDynamicLink}>
-                    <div className="blurmap"></div>
-                    <div className="blurmap-text" >
-                        下载点圈app，查看我的宝藏推荐地图
-                    </div>
-                </div>  
-                </Grid.Column>
+            <div className="comments">
+                <p>评论</p>
+                {this.state.comments ?
+                    <table id="otherinfo_table">
+                        <tbody>
+                            {this.state.comments.map(function(row, i){
+                                return  (
+                                    <tr>
+                                        <td className="info_name"><img src={row.sender_avator} className="comment_user_icon"/></td>
+                                        <td>
+                                            <p>
+                                                {row.sender_name}
+                                            </p>
+                                            {row.receiver_name? "@"+row.receiver_name+": "+row.comment_content:row.comment_content}
+                                        </td>
+                                    </tr>
+                                )
+                            
+                            })}
+                        </tbody>
+                    </table>   
+               
+                : ""}
+            </div>   
+            </Grid.Column>
       
             </Grid.Row>
             </Grid>
             </main>
-            </div>
+
+            <StickyFooter numOfLiked = {this.state.numOfLiked} pinId={this.props.match.params.id}/>
+        </div>
         )
     }
 }

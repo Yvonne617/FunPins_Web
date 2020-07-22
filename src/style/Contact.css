@@ -40,3 +40,24 @@
 #form-button-control-public{
   background-color: rgb(255, 210, 0);
 }
+.thankstitle{
+  color:white;
+  margin:170px auto 0 auto;
+  text-align: center;
+  font-size: 2.8em;
+  font-family:Pudding;
+}
+.thanksinfo{
+  color:white;
+  margin:0px 20px 0 20px;
+  text-align: center;
+  font-size: 1.5em;
+  font-family:Pudding;
+}
+.thankyou_icon {
+  text-align: center;
+}
+.thankyou_icon img{
+  margin: auto auto;
+  width:60%;
+}

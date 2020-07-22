@@ -5,6 +5,7 @@ import hotpot_logo from './img/hotpot_icon.png';
 import soup_logo from './img/soup.png'; 
 import boba_logo from './img/milktea.png';
 import meat_logo from './img/meat.png';
+import funpin_logo from './img/funpin.png';
 import en from './lan/en.json';
 import cn from './lan/cn.json';
 import {
@@ -39,7 +40,11 @@ class MenuExampleSecondary extends Component {
             <img style={{width:"50px",height:"50px"}} src={soup_logo} alt="Logo" />
             <span>{t('nav.nav_news')}</span>
           </Link>
- 
+        
+          <Link to="/Map/" className="menu_btn">
+            <img style={{width:"50px",height:"50px"}} src={funpin_logo} alt="Logo" />
+            <span>{t('nav.nav_maps')}</span>
+          </Link>
           
 
           <Link to="/Refer/" className="menu_btn">

@@ -53,6 +53,10 @@
     display: block; 
     margin: auto auto;
   }
+#map_container{
+  height:100%;
+  z-index: 100;
+}
 @media (max-width: 500px) {
     .download_bnts img{
       width:130px !important;
