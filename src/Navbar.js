@@ -37,7 +37,7 @@ class MenuExampleSecondary extends Component {
    
 
           <Link to="/News/" className="menu_btn">
-            <img style={{width:"50px",height:"50px"}} src={soup_logo} alt="Logo" />
+            <img style={{width:"50px",height:"50px"}} src={boba_logo} alt="Logo" />
             <span>{t('nav.nav_news')}</span>
           </Link>
         
@@ -47,11 +47,11 @@ class MenuExampleSecondary extends Component {
           </Link>
           
 
-          <Link to="/Refer/" className="menu_btn">
+          {/* <Link to="/Refer/" className="menu_btn">
             <img style={{width:"50px",height:"50px"}} src={boba_logo} alt="Logo" />
             <span>{t('nav.nav_refer')}</span>
           </Link>
-    
+     */}
         
          
           <Link to="/Contact/" className="menu_btn">

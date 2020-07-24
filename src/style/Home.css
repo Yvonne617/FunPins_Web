@@ -57,6 +57,9 @@
   height:100%;
   z-index: 100;
 }
+.lan{
+  height:100px;
+}
 @media (max-width: 500px) {
     .download_bnts img{
       width:130px !important;
