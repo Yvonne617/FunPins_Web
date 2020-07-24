@@ -33,6 +33,12 @@ class Pin extends Component {
         var chour = current_date.getHours()
         var cmin = current_date.getMinutes()
         var cur_time =  cday*2400 + chour*100 + cmin;
+        db.collection("pins").doc(this.props.match.params.id).collection("numOfLikedShards").get().then(
+            querySnapshot=> {
+                querySnapshot.forEach(doc=> {
+                    this.setState({numOfLiked:this.state.numOfLiked+doc.data().count})
+                })}
+        )
         db.collection("pins").doc(this.props.match.params.id).get().then(doc => {
           if (!doc.exists) {
             console.log('No such document!');
@@ -44,7 +50,7 @@ class Pin extends Component {
             this.setState({images:this.state.data.images.map((item) => item.uri)})
             this.setState({place_id:this.state.data.place_id})
             this.setState({address:this.state.data.address})
-            this.setState({numOfLiked:this.state.data.numOfLiked})
+            // this.setState({numOfLiked:this.state.data.numOfLiked})
             db.collection("users").doc(this.state.user.toString()).get().then(doc => {
                 if (!doc.exists) {
                   console.log('No such user!');
@@ -128,7 +134,9 @@ class Pin extends Component {
                                 } else {
                                     const receiver_name = doc.data().name
                                     temp_comment_arr.receiver_name = receiver_name
-                                    this.state.comments.push(temp_comment_arr)
+                                    var joined = this.state.comments.concat([temp_comment_arr]);
+                                    this.setState({ comments: joined })
+                                    //this.state.comments.push(temp_comment_arr)
                                     console.log("comments:",this.state.comments)
                                 }
                               })
@@ -136,7 +144,9 @@ class Pin extends Component {
                                 console.log('Error getting user', err);
                               });
                         }else{
-                            this.state.comments.push(temp_comment_arr)
+                            var joined = this.state.comments.concat([temp_comment_arr]);
+                            this.setState({ comments: joined })
+                           // this.state.comments.push(temp_comment_arr)
                             console.log("comments:",this.state.comments)
                         }
                     }

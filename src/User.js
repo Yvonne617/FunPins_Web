@@ -17,7 +17,7 @@ import $ from 'jquery';
 class User extends Component {
     constructor (props){
         super(props);
-        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},images:["/bg.png"],video:null,price:null,place_id:null,address:null,placeName:null,business_number:null,business_status:null,comments:[],numOfLiked:0};
+        this.state = { width: 0, height: 0 ,data:{},user:{},userinfo:{},numOfWished:0,numOfLiked:0,numOfFollowers:0,numOfFollowings:0};
     }    
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -37,11 +37,12 @@ class User extends Component {
         var chour = current_date.getHours()
         var cmin = current_date.getMinutes()
         var cur_time =  cday*2400 + chour*100 + cmin;
+        //get user data
         db.collection("users").doc(this.props.match.params.id).get().then(doc => {
           if (!doc.exists) {
             console.log('No such user!');
           } else {
-            console.log('Document data:', doc.data());
+            // console.log('Document data:', doc.data());
             this.setState({userinfo: doc.data()});
           }
         })
@@ -49,8 +50,37 @@ class User extends Component {
           console.log('Error getting user info', err);
         });
         $('.user_icon').width($('.user_icon').height());
+    
+        //get numOfFollowersShards
+        db.collection("users").doc(this.props.match.params.id).collection("numOfFollowersShards").get().then(
+            querySnapshot=> {
+                querySnapshot.forEach(doc=> {
+                    this.setState({numOfFollowers:this.state.numOfFollowers+doc.data().count})
+                })}
+        )
+        // get numOfFollowings
+        db.collection("users").doc(this.props.match.params.id).collection("numOfFollowingsShards").get().then(
+            querySnapshot=> {
+                querySnapshot.forEach(doc=> {
+                    this.setState({numOfFollowings:this.state.numOfFollowings+doc.data().count})
+                })}
+        )
+        //get numOfWishedchards
+        db.collection("users").doc(this.props.match.params.id).collection("numOfWishedShards").get().then(
+            querySnapshot=> {
+                querySnapshot.forEach(doc=> {
+                    this.setState({numOfWished:this.state.numOfWished+doc.data().count})
+                })}
+        )
+                //get numofliked
+        db.collection("users").doc(this.props.match.params.id).collection("numOfLikedShards").get().then(
+                    querySnapshot=> {
+                        querySnapshot.forEach(doc=> {
+                            this.setState({numOfLiked:this.state.numOfLiked+doc.data().count})
 
-      }
+                        })}
+                )
+    }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
         $('.user_icon').width($('.user_icon').height());
@@ -110,10 +140,10 @@ class User extends Component {
             
                 <Grid.Column mobile={11} tablet={10} computer={10}>
                     <div className="section2"> 
-                        <div className="sub_info">粉丝<div className="sub_info_num">{this.state.userinfo.followers?this.state.userinfo.followers.length:"-"}</div></div>
-                        <div className="sub_info">关注<div className="sub_info_num">{this.state.userinfo.followings?this.state.userinfo.followings.length:"-"}</div></div>
-                        <div className="sub_info">赞和想去<div className="sub_info_num">{this.state.userinfo.numOfLiked?this.state.userinfo.numOfLiked+this.state.userinfo.numOfWished:0}</div></div>
-                        <div className="sub_info">标记<div className="sub_info_num">{this.state.userinfo.pins?this.state.userinfo.pins.length:'-'}</div></div>
+                        <div className="sub_info">粉丝<div className="sub_info_num">{this.state.numOfFollowers}</div></div>
+                        <div className="sub_info">关注<div className="sub_info_num">{this.state.numOfFollowings}</div></div>
+                        <div className="sub_info">赞和想去<div className="sub_info_num">{this.state.numOfLiked+this.state.numOfWished}</div></div>
+                        <div className="sub_info">标记<div className="sub_info_num">{this.state.userinfo.pins?this.state.userinfo.pins.length:0}</div></div>
                     </div>
                    
                 </Grid.Column>

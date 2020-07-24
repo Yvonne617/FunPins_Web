@@ -32,7 +32,7 @@ function Footer(props) {
             <div style={phantom} />
             <div style={style}>
                 <input id="comment" placeholder="评论一下..." onClick={e =>createDynamicLink(props.pinId)}></input>
-                <div id="likeSpan"><img id="footerBtn" src="赞.png" onClick={e => createDynamicLink(props.pinId)}></img>{ props.numOfLiked }人赞了 <img id="footerBtn" src="fire.png" onClick={e =>createDynamicLink(props.pinId)}></img>去了 <img id="footerBtn" src="爱心.png" onClick={e=>createDynamicLink(props.pinId)}></img>想去 </div>
+                <div id="likeSpan"><img id="footerBtn" src="赞.png" onClick={e => createDynamicLink(props.pinId)}></img>{ props.numOfLiked?props.numOfLiked:0 }人赞了 <img id="footerBtn" src="fire.png" onClick={e =>createDynamicLink(props.pinId)}></img>去了 <img id="footerBtn" src="爱心.png" onClick={e=>createDynamicLink(props.pinId)}></img>想去 </div>
             </div>
         </div>
     )
