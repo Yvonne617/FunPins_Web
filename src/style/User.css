@@ -61,7 +61,6 @@
     margin-top:20px; 
 }
 hr{
-    width:90%;
     margin-top:20px;
     border:0.02em solid rgb(209, 206, 206);
 }
@@ -147,8 +146,7 @@ hr{
         transform: translate(25px, -20px);
     }
     hr{
-        width:83%;
-        margin-top:40px;
+        margin-top:20px;
         border:0.5px solid rgb(209, 206, 206);
     }
     .ui.cards>.card{
