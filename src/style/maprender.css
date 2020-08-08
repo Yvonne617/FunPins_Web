@@ -87,4 +87,20 @@
   }
 
   
- 
+  @media (max-width: 765px){
+    .mapboxgl-popup-content {
+      max-width: 80%;
+    }
+    .mapboxgl-popup-content img {
+      width: 100%;
+      height: 100%;
+    }
+    .mapboxgl-popup-content .bottom {
+      width:93%;
+      height:40%;
+    }
+    .mapboxgl-popup-content .bottom img{
+      width:10%;
+      height:40%;
+    }
+  }

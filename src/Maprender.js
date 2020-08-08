@@ -247,10 +247,9 @@ function createBrife(pin){
             console.log("No user");
         } else {
             const user= doc.data();
-            console.log(user.avatar);
             var res = `
             <div id = "container">
-            <image src = "${imageURL_0}" class="slider-image" />
+            <a href="${pinID}"><image src = "${imageURL_0}" class="slider-image" /></a>
             <div class="bottom">
                 <img src = "${user.avatar?user.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"}" classname = "icon" />
                 <a href="${pinID}"> <p> ${title} </p> </a>
@@ -370,7 +369,6 @@ function offSetMarker(marker, markerGrowSize, map) {
 
 
 function initMap(map, pins) {
-    console.log(pins);
     const bounds = new mapboxgl.LngLatBounds();
     // ADD MARKERS TO MAP
     pins.forEach((marker) => {
@@ -382,7 +380,7 @@ function initMap(map, pins) {
 
         el.nextSibling.addEventListener('click', () => {
             map.flyTo({
-                center: marker.coord,
+                center: [marker.coord[0],marker.coord[1]+0.03],
                 zoom: 11,
             });
             new mapboxgl.Popup({ closeOnClick: false })

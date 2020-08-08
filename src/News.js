@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Menu from './topmenu';
+import firebase from './firebase';
+import 'firebase/firestore';
+import 'firebase/functions';
 import {Helmet} from 'react-helmet';
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Image, List, Divider } from 'semantic-ui-react';
@@ -27,6 +30,12 @@ export default class MenuExampleSecondary extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
       }
+    getArticles() {
+        const getArticles = firebase.functions().httpsCallable('getWeChatArticles');
+        getArticles({}).then(result => {
+            console.log(result);
+        });
+    }
     renderArticles() {
         
         return this.state.articles.map((article, index) => {
@@ -37,6 +46,7 @@ export default class MenuExampleSecondary extends Component {
     }
 
     render() {
+        this.getArticles();
         const articles = this.renderArticles();
         return (
             <div id="outer-container">
