@@ -1,5 +1,5 @@
 #page-wrap2{
-    margin:40px auto 60px auto;
+    margin:74px auto 60px auto;
 }
 .parent3{
     position: relative;
@@ -7,7 +7,9 @@
     /* height:550px; */
     margin:50px 0px 20px 0px;
     background-color:white;
-  }
+}
+
+
 .carousel .slide{
     background: none !important; 
 }
@@ -28,7 +30,7 @@
     border: 1px solid rgb(177, 175, 175);
 }
 .imgcontainer{
-    height: 380px;
+    /*height: 380px;*/
     width:100%;
     max-width: 400px;
     overflow: hidden;
@@ -41,8 +43,6 @@
 @media (max-width: 765px) {
 
     .carousel .slide img {
-        /* width:500px !important; */
-        /* height:100%; */
         margin:auto auto;
         position: relative;
         width:100%;
@@ -68,7 +68,7 @@
         /* width:400px !important; */
         /* height:550px; */
         margin:0px 0px 20px 0px;
-        background-color:white;
+        background-color:red;
       }
 }
 

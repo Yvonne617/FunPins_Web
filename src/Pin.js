@@ -14,6 +14,7 @@ import StickyFooter from './StickyFooter';
 import 'firebase/firestore'
 import 'firebase/functions';
 import { ConsoleWriter } from 'istanbul-lib-report';
+
 class Pin extends Component {
     constructor (props){
         super(props);
@@ -205,13 +206,16 @@ class Pin extends Component {
 
            <main id="page-wrap2">
            <Grid centered>
-           <Grid.Row>
+           <Grid.Row style={{padding: "0px"}}>
+               {/* image on the left */}
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div className="parent3">
                         {/* <MyGaller height={this.state.width?this.state.width:window.innerWidth}/>       */}
-                        <Carousel isvideo={this.state.video} video={this.state.video} showIndicators={this.state.images.length>1?true:false} images={this.state.images}/>                
+                        <Carousel isvideo={this.state.video} video={this.state.video} showIndicators={this.state.images.length>1?true:false} images={this.state.images}/>
                     </div> 
                 </Grid.Column>
+
+               {/* text on the right side */}
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div id="content">
                         <div className="author">
