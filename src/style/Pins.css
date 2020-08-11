@@ -9,14 +9,14 @@
     background-color:white;
 }
 
-/*.carousel .slide img {*/
-/*    margin:auto auto;*/
-/*    position: relative;*/
-/*    width:100%;*/
-/*    height:60vh; !*height is 50% of window*!*/
-/*    display: block;*/
-/*    object-fit: cover; !*cover will make image fill in all div without stretching*!*/
-/*}*/
+.carousel .slide img {
+    margin:auto auto;
+    position: relative;
+    width:100%;
+    height:60vh; /*height is 50% of window*/
+    display: block;
+    object-fit: cover; /*cover will make image fill in all div without stretching*/
+}
 
 .carousel .slide{
     background: none !important; 
@@ -54,7 +54,7 @@
         width:100%;
         height:50vh; /*height is 50% of window*/
         display: block;
-        object-fit: contain; /*cover will make image fill in all div without stretching*/
+        object-fit: cover; /*cover will make image fill in all div without stretching*/
     }
 
     .author,.pin_intro{
