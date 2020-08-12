@@ -25,8 +25,8 @@
     margin-top:150px !important;
 }
 #content{
-    margin:30px 10px 0px 10px;
-    padding:20px 0px;
+    margin:40px 10px 0px 10px;
+    padding:15px 0px 5px 0px;
     background-color:white;
     border-radius: 15px;
 }
@@ -46,6 +46,11 @@
     text-align: center;
 }
 
+#horizontal-line {
+    margin: 5px;
+    /*width: 100%;*/
+}
+
 @media (max-width: 765px) {
 
     .carousel .slide img {
@@ -57,9 +62,12 @@
         object-fit: cover; /*cover will make image fill in all div without stretching*/
     }
 
-    .author,.pin_intro{
-        margin:10px 5px !important;
+    .pin_intro{
+        margin:5px 5px !important;
+        padding:5px;
+        background-color: white;
     }
+
     #content{
         margin:0px 5px;
         padding:0px 5px;
@@ -75,20 +83,18 @@
         /* height:550px; */
         margin:0px 0px 20px 0px;
         background-color:white;
-      }
-    #horizontal-line {
-        width: 100%;
+    }
 
+    #horizontal-line {
+        margin: 5px;
+        /*width: 100%;*/
     }
 }
-
 
 
 div{
     background-position: center;
 }
-
-
 
 #topbanner{
     position:fixed;background:white;width:100%;
@@ -97,17 +103,21 @@ div{
     background-color:rgb(255, 210, 0);
     height: 60px;
 }
+.author {
+    padding: 10px;
+}
 .author_icon{
     display: inline-block !important;
-    width:40px !important;
+    width: 40px !important;
     height: 40px !important;
 }
 .author_intro{
     float: right;
 }
 .author_name{
-    margin-left: 5px;
-    font-size: 1.3em;
+    vertical-align:middle;
+    margin-left: 10px;
+    font-size: 1.5em;
 }
 
 
@@ -138,7 +148,6 @@ div{
 #funpinsheader{
     width:200px;
     height: 60px;
-    
 }
 #dqlogo{
     width:52px;
@@ -146,6 +155,7 @@ div{
 }
 .pin_intro{
     white-space: pre-line;
+    padding: 5px;
 }
 #outer-container2{
     background-color:white;
@@ -182,7 +192,6 @@ div{
     position: absolute;
     left:50px;
     top:35%;
-
 }
 .pinsubtitle{
     position: absolute;
@@ -228,9 +237,10 @@ div{
     font-family: Pudding
 }
 .pin_title{
-    font-size: 1.4em !important;
-    margin-top:20px !important;
-    margin-bottom:20px !important;
+    font-size: 1.6em !important;
+    padding: 5px 0px;
+    /*margin-top:20px !important;*/
+    /*margin-bottom:20px !important;*/
     font-family: 'ZCOOL KuaiLe', cursive;
 }
 .dateBefore{
@@ -270,6 +280,7 @@ div{
 }
 .placeName{
     margin:5px;
+    padding: 0px 5px;
     font-size: 0.9em;
 }
 #mapIcon{
