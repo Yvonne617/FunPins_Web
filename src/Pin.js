@@ -226,12 +226,12 @@ class Pin extends Component {
                         : ""
                     }
                         <span className="author_name">{this.state.userinfo.name}</span>
-                        <span className="author_intro">
-                        <img className="author_icon" src={this.state.userinfo.badge+'.png'} />
-                        <span id="badge">{this.state.userinfo.badge}</span>
-                        </span>
+                        {/*<span className="author_intro">*/}
+                        {/*    <img className="author_icon" src={this.state.userinfo.badge+'.png'} />*/}
+                        {/*    <span id="badge">{this.state.userinfo.badge}</span>*/}
+                        {/*</span>*/}
                         </div>
-                        <hr></hr>
+                        <hr id="horizontal-line" />
                         <div className="placeName">
                             <img id="mapIcon" src="/maps-and-location.png"></img>
                             <div className="placeStr">{this.state.placeName?this.state.placeName:""}</div>
