@@ -55,6 +55,12 @@
     display: none;
 }
 
+#funpinsheader{
+    width:200px;
+    height: 60px;
+    margin-left: 84%;
+}
+
 @media (max-width: 765px) {
 
     .carousel .slide img {
@@ -107,6 +113,25 @@
         text-align: center;
     }
 
+    #funpinsheader{
+        margin-left: 10px;
+    }
+    .author {
+        padding: 10px 0px;
+    }
+    .author_icon{
+        display: inline-block !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .author_intro{
+        float: right;
+    }
+    .author_name{
+        vertical-align:middle;
+        margin-left: 10px;
+        font-size: 1.5em;
+    }
 }
 
 
@@ -121,8 +146,10 @@ div{
     background-color:rgb(255, 210, 0);
     height: 60px;
 }
+
 .author {
-    padding: 10px;
+    padding: 10px 0px;
+    margin-right: 50px;
 }
 .author_icon{
     display: inline-block !important;
@@ -153,10 +180,7 @@ div{
     cursor: pointer;
 }
 
-#funpinsheader{
-    width:200px;
-    height: 60px;
-}
+
 #dqlogo{
     width:52px;
     height:52px;
