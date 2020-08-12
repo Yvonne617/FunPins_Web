@@ -51,31 +51,47 @@
     /*width: 100%;*/
 }
 
-#openappbtn{
-    display: none;
-}
-
-#funpinsheader{
-    width:200px;
+/* yellow header style*/
+.Header_root{
+    background-color:rgb(255, 210, 0);
     height: 60px;
-    margin-left: 84%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
-
 .author {
-    padding: 10px 0px;
-    margin-right: 50px;
-    width: 500px;
+    display: flex;
+    margin-right: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
 }
-.author_icon{
+.author_icon {
     display: inline-block !important;
     width: 40px !important;
     height: 40px !important;
 }
-
 .author_name{
     vertical-align:middle;
-    margin-left: 10px;
+    margin-right: 10px;
     font-size: 1.5em;
+    font-family: Pudding;
+    color: white;
+}
+
+/*OpenApp button style*/
+#openappbtn{
+    display: none;
+}
+#openapp{
+    width:80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    color: white;
     font-family: Pudding;
 }
 
@@ -84,7 +100,48 @@
 }
 
 @media (max-width: 765px) {
+    /* yellow header style*/
+    .Header_root{
+        background-color:rgb(255, 210, 0);
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .author {
+        display: flex;
+        margin-left: 10px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .author_icon {
+        display: inline-block !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .author_name{
+        vertical-align:middle;
+        margin-left: 10px;
+        font-size: 1.5em;
+        font-family: Pudding;
+        color: white;
+    }
 
+    /*open app button*/
+    #openappbtn{
+        display: inline;
+        height:35px;
+        width:80px;
+        font-size:15px;
+        border: 2px solid white;
+        border-radius: 19px;
+        position: absolute;
+        right:10px;
+        top:12px;
+        text-align: center;
+    }
+
+    /*Image View*/
     .carousel .slide img {
         margin:auto auto;
         position: relative;
@@ -119,41 +176,8 @@
 
     #horizontal-line {
         margin: 5px;
-        /*width: 100%;*/
     }
 
-    #openappbtn{
-        display: inline;
-        height:35px;
-        width:80px;
-        font-size:15px;
-        border: 2px solid white;
-        border-radius: 19px;
-        position: absolute;
-        right:10px;
-        top:12px;
-        text-align: center;
-    }
-
-    #funpinsheader{
-        margin-left: 10px;
-    }
-    .author {
-        padding: 10px 0px;
-    }
-    .author_icon{
-        display: inline-block !important;
-        width: 40px !important;
-        height: 40px !important;
-    }
-    .author_intro{
-        float: right;
-    }
-    .author_name{
-        vertical-align:middle;
-        margin-left: 10px;
-        font-size: 1.5em;
-    }
 }
 
 
@@ -164,27 +188,6 @@ div{
 #topbanner{
     position:fixed;background:white;width:100%;
 }
-.Header_root{
-    background-color:rgb(255, 210, 0);
-    height: 60px;
-}
-
-
-
-.Header_title{
-    color:white;
-}
-
-#openapp{
-    width:80px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-}
-
 
 #dqlogo{
     width:52px;
@@ -332,5 +335,4 @@ div{
     margin-bottom: auto;
     height:25px;
     margin-left: 5px;
-
 }

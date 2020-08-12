@@ -186,33 +186,28 @@ class Pin extends Component {
                     // This is the sticky part of the header.
                     header={
                     <div className="Header_root">
-                        <div className="Header_title">
-                            <div id="funpinsheader">
-                                <div className="author">
-                                    {   this.state.userinfo.id?
-                                        <Link to={"/User/"+this.state.userinfo.id}>
-                                            <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
-                                        </Link>
-                                        : ""
-                                    }
-                                    <span className="author_name" style={{fontSize: "1.5em"}}>{this.state.userinfo.name}</span>
-                                </div>
-
-                                {/*<img id="dqlogo" src="/dianquanLogo.png"></img>*/}
-                                {/*<div id="dq" className="pintitle">点圈,</div>*/}
-                                {/*<div id="dt" className="pinsubtitle">用地图标记生活</div>*/}
-                            </div>
-                            <div id="openappbtn" onClick={this.createDynamicLink}>
-                                <div id="openapp" >打开App</div>
-                            </div>
-                           
+                        <div className="author">
+                            {   this.state.userinfo.id?
+                                <Link to={"/User/"+this.state.userinfo.id}>
+                                    <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
+                                </Link>
+                                : ""
+                            }
+                            <span className="author_name" style={{fontSize: "1.5em"}}>{this.state.userinfo.name}</span>
                         </div>
-                        
+
+                        {/*<img id="dqlogo" src="/dianquanLogo.png"></img>*/}
+                        {/*<div id="dq" className="pintitle">点圈,</div>*/}
+                        {/*<div id="dt" className="pinsubtitle">用地图标记生活</div>*/}
+
+                        <div id="openappbtn" onClick={this.createDynamicLink}>
+                            <div id="openapp" >打开App</div>
+                        </div>
                     </div>
                     }
                 >
-                    
                 </StickyHeader>
+
 
            <main id="page-wrap2">
            <Grid centered>
