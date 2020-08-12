@@ -51,6 +51,10 @@
     /*width: 100%;*/
 }
 
+#openappbtn{
+    display: none;
+}
+
 @media (max-width: 765px) {
 
     .carousel .slide img {
@@ -89,6 +93,20 @@
         margin: 5px;
         /*width: 100%;*/
     }
+
+    #openappbtn{
+        display: inline;
+        height:35px;
+        width:80px;
+        font-size:15px;
+        border: 2px solid white;
+        border-radius: 19px;
+        position: absolute;
+        right:10px;
+        top:12px;
+        text-align: center;
+    }
+
 }
 
 
@@ -124,17 +142,7 @@ div{
 .Header_title{
     color:white;
 }
-#openappbtn{
-    height:35px;
-    width:80px;
-    font-size:15px;
-    border: 2px solid white;
-    border-radius: 19px;
-    position: absolute;
-    right:10px;
-    top:12px;
-    text-align: center;
-}
+
 #openapp{
     width:80px;
     position: absolute;
