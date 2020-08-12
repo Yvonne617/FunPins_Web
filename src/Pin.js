@@ -195,7 +195,7 @@ class Pin extends Component {
                                         </Link>
                                         : ""
                                     }
-                                    <span className="author_name">{this.state.userinfo.name}</span>
+                                    <span className="author_name" style={{fontSize: "1.5em"}}>{this.state.userinfo.name}</span>
                                 </div>
 
                                 {/*<img id="dqlogo" src="/dianquanLogo.png"></img>*/}

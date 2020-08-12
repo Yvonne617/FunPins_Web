@@ -61,6 +61,28 @@
     margin-left: 84%;
 }
 
+.author {
+    padding: 10px 0px;
+    margin-right: 50px;
+    width: 500px;
+}
+.author_icon{
+    display: inline-block !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.author_name{
+    vertical-align:middle;
+    margin-left: 10px;
+    font-size: 1.5em;
+    font-family: Pudding;
+}
+
+.author_intro{
+    float: right;
+}
+
 @media (max-width: 765px) {
 
     .carousel .slide img {
@@ -147,23 +169,6 @@ div{
     height: 60px;
 }
 
-.author {
-    padding: 10px 0px;
-    margin-right: 50px;
-}
-.author_icon{
-    display: inline-block !important;
-    width: 40px !important;
-    height: 40px !important;
-}
-.author_intro{
-    float: right;
-}
-.author_name{
-    vertical-align:middle;
-    margin-left: 10px;
-    font-size: 1.5em;
-}
 
 
 .Header_title{
@@ -265,11 +270,9 @@ div{
     padding: 0px 10px;
     border-radius:15px;
 }
-.author_name{
-    font-family: Pudding
-}
+
 .pin_title{
-    font-size: 1.6em !important;
+    font-size: 2.2em !important;
     padding: 5px 0px;
     /*margin-top:20px !important;*/
     /*margin-bottom:20px !important;*/
