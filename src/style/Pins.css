@@ -76,7 +76,7 @@
     margin-right: 10px;
     font-size: 1.5em;
     font-family: Pudding;
-    color: white;
+    color: black;
 }
 
 /*OpenApp button style*/
@@ -91,7 +91,7 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     cursor: pointer;
-    color: white;
+    color: black;
     font-family: Pudding;
 }
 
@@ -124,7 +124,7 @@
         margin-left: 10px;
         font-size: 1.5em;
         font-family: Pudding;
-        color: white;
+        color: black;
     }
 
     /*open app button*/
@@ -133,7 +133,7 @@
         height:35px;
         width:80px;
         font-size:15px;
-        border: 2px solid white;
+        border: 2px solid black;
         border-radius: 19px;
         position: absolute;
         right:10px;
