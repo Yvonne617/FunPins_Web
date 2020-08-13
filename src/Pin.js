@@ -186,23 +186,28 @@ class Pin extends Component {
                     // This is the sticky part of the header.
                     header={
                     <div className="Header_root">
-                        <div className="Header_title">
-                            <div id="funpinsheader">
-                                <img id="dqlogo" src="/dianquanLogo.png"></img>
-                                <div id="dq" className="pintitle">点圈,</div>
-                                <div id="dt" className="pinsubtitle">用地图标记生活</div>
-                            </div>
-                            <div id="openappbtn" onClick={this.createDynamicLink}>
-                                <div id="openapp" >打开App</div>
-                            </div>
-                           
+                        <div className="author">
+                            {   this.state.userinfo.id?
+                                <Link to={"/User/"+this.state.userinfo.id}>
+                                    <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
+                                </Link>
+                                : ""
+                            }
+                            <span className="author_name" style={{fontSize: "1.5em"}}>{this.state.userinfo.name}</span>
                         </div>
-                        
+
+                        {/*<img id="dqlogo" src="/dianquanLogo.png"></img>*/}
+                        {/*<div id="dq" className="pintitle">点圈,</div>*/}
+                        {/*<div id="dt" className="pinsubtitle">用地图标记生活</div>*/}
+
+                        <div id="openappbtn" onClick={this.createDynamicLink}>
+                            <div id="openapp" >打开App</div>
+                        </div>
                     </div>
                     }
                 >
-                    
                 </StickyHeader>
+
 
            <main id="page-wrap2">
            <Grid centered>
@@ -218,14 +223,19 @@ class Pin extends Component {
                {/* text on the right side */}
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                     <div id="content">
-                        <div className="author">
-                    {   this.state.userinfo.id?
-                        <Link to={"/User/"+this.state.userinfo.id}>
-                            <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />
-                        </Link>
-                        : ""
-                    }
-                        <span className="author_name">{this.state.userinfo.name}</span>
+                        {/*post title*/}
+                        <p className="pin_title">{this.state.data.title}</p>
+
+                        {/*    <div className="author">*/}
+                    {/*{   this.state.userinfo.id?*/}
+                    {/*    <Link to={"/User/"+this.state.userinfo.id}>*/}
+                    {/*        <Image className="author_icon" src={this.state.userinfo.avatar?this.state.userinfo.avatar:"https://firebasestorage.googleapis.com/v0/b/dianquan.appspot.com/o/000userAvatars%2FdianquanLogo.png?alt=media&token=f4b22a50-c959-485d-9a2a-0646b4e06fcf"} size='small' circular />*/}
+                    {/*    </Link>*/}
+                    {/*    : ""*/}
+                    {/*}*/}
+                    {/*    <span className="author_name">{this.state.userinfo.name}</span>*/}
+
+                        {/*badge*/}
                         {/*<span className="author_intro">*/}
                         {/*    <img className="author_icon" src={this.state.userinfo.badge+'.png'} />*/}
                         {/*    <span id="badge">{this.state.userinfo.badge}</span>*/}
@@ -237,11 +247,11 @@ class Pin extends Component {
                             <div className="placeStr">{this.state.placeName?this.state.placeName:""}</div>
                         </div>
                         <div className="pin_intro">
-                            <p className="pin_title">{this.state.data.title}</p>                  
+                            {/*<p className="pin_title">{this.state.data.title}</p>                  */}
                             {<p>{this.state.data.subTitle? this.state.data.subTitle.trimEnd():this.state.data.subTitle}</p>} 
                             <p className="dateBefore"> {Math.floor((new Date().getTime()-new Date(this.state.data.timeStamp*1000)) / (24 * 3600 * 1000))}天前</p>
 
-                        </div>
+                        {/*</div>*/}
                     </div>
                     <div id="otherinfo">
                     <table id="otherinfo_table">
